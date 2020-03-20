@@ -19,7 +19,7 @@ class Ticket
     /**
      * @ORM\Column(type="string", length=150)
      */
-    private $Title;
+    private $title;
 
     /**
      * @ORM\Column(type="text")
@@ -49,12 +49,12 @@ class Ticket
 
     public function getTitle(): ?string
     {
-        return $this->Title;
+        return $this->title;
     }
 
-    public function setTitle(string $Title): self
+    public function setTitle(string $title): self
     {
-        $this->Title = $Title;
+        $this->title = $title;
 
         return $this;
     }
