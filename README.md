@@ -1,6 +1,6 @@
 # Aidons les aidants #
 
-### Setup and run ###
+## Setup and run ##
 
 #### Method 1 : using makefile ####
 
@@ -9,14 +9,6 @@ make docker-start
 ```
 
 #### Method 2 : command line ####
-
-*Clear any previous container instance and image*
-
-```
-docker stop alaid_php
-docker rm -v alaid_php
-docker rmi docker_php
-```
 
 *Build and run docker containers*
 
@@ -42,4 +34,20 @@ docker exec -it alaid_php php composer.phar install -d /alaid
 
 ```
 http://alaid.test
+```
+
+## Troubleshooting ##
+
+*Clear any previous container instance and image*
+
+```
+docker stop alaid_php
+docker rm -v alaid_php
+docker rmi docker_php
+```
+
+*Clear and restart using makefile*
+
+```
+make docker-rebuild
 ```
