@@ -4,12 +4,12 @@ namespace App\Controller;
 
 use Exception;
 use Twig\Environment;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Routing\RouterInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Routing\RouterInterface;
 
 use App\Entity\Ticket;
 use App\Form\TicketType;
@@ -84,7 +84,7 @@ class TicketController
     /**
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
      * @param Ticket $ticket
-     * @return Response
+     * @return Response|RedirectResponse
      * @throws Exception
      */
     public function edit(Ticket $ticket)
