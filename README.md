@@ -49,5 +49,5 @@ docker rmi docker_php
 *Clear and restart using makefile*
 
 ```
-make docker-rebuild
+make docker-start-rebuild
 ```
