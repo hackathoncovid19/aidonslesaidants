@@ -2,14 +2,17 @@
 
 namespace App\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Twig\Environment;
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 
 use App\Entity\Ticket;
+use App\Form\TicketType;
 
 /**
  * @Route("/ticket", name="ticket_")
@@ -27,17 +30,33 @@ class TicketController
     private $entityManager;
 
     /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    /**
      * TicketController constructor.
      * @param Environment $twig
      * @param EntityManagerInterface $entityManager
+     * @param FormFactoryInterface $formFactory
+     * @param RouterInterface $router
      */
     public function __construct(
         Environment $twig,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        FormFactoryInterface $formFactory,
+        RouterInterface $router
     )
     {
         $this->twig = $twig;
         $this->entityManager = $entityManager;
+        $this->formFactory = $formFactory;
+        $this->router = $router;
     }
 
     /**
@@ -70,8 +89,19 @@ class TicketController
      */
     public function edit(Ticket $ticket)
     {
+        $form = $this->formFactory->create(TicketType::class, $ticket);
+
+        $form->handleRequest($ticket);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ticket = $form->getData();
+
+            $url = $this->router->generate('ticket_view', [$ticket]);
+            return new RedirectResponse($url, 302);
+        }
+
         return new Response($this->twig->render('ticket/edit.html.twig', [
-            'ticket' => $ticket
+            'ticket' => $ticket,
+            'form' => $form->createView(),
         ]));
     }
 
