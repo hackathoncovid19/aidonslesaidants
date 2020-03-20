@@ -13,5 +13,8 @@
 .idea
 .nbproject
 
+# MySQL local database
+.docker/mysql/data
+
 # composer and symfony lock files
 *.lock
