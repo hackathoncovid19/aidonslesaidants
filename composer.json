@@ -13,7 +13,8 @@
         "sensio/framework-extra-bundle": "5.5.*",
         "symfony/orm-pack": "^1.0",
         "symfony/yaml": "5.0.*",
-        "symfony/twig-bundle": "5.0.*"
+        "symfony/twig-bundle": "5.0.*",
+        "laminas/laminas-hydrator": "3.0.*"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.3"

@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Exception;
+use Twig\Environment;
+
+use Laminas\Hydrator\ObjectPropertyHydrator;
+
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Ticket;
@@ -12,17 +15,37 @@ use App\Entity\Ticket;
 /**
  * @Route("/ticket", name="ticket_")
  */
-class TicketController extends AbstractController
+class TicketController
 {
     /**
-     * @Route("/{id}", name="view", methods={"GET"})
-     * @param Request $request
-     * @param Ticket $ticket
-     * @return Response
+     * @var ObjectPropertyHydrator
      */
-    public function view(Request $request, Ticket $ticket)
+    private $hydrator;
+
+    /**
+     * @var Environment
+     */
+    private $twig;
+
+    /**
+     * TicketController constructor.
+     * @param Environment $twig
+     * @param ObjectPropertyHydrator $hydrator
+     */
+    public function __construct(Environment $twig, ObjectPropertyHydrator $hydrator)
     {
-        return $this->render('ticket/view.html.twig');
+        $this->hydrator = $hydrator;
+    }
+
+    /**
+     * @Route("/{id}", name="view", methods={"GET"})
+     * @param Ticket $ticket
+     * @return string
+     * @throws Exception
+     */
+    public function view(Ticket $ticket)
+    {
+        return $this->twig->render('ticket/view.html.twig');
     }
 
     /**
