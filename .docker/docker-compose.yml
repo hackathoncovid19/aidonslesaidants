@@ -1,0 +1,42 @@
+version: '2'
+services:
+    httpd:
+        container_name: alaid_web
+        restart: always
+        image: httpd:2.4
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+          - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+          - ./apache/vhosts:/usr/local/apache2/sites-available
+        volumes_from:
+            - php
+    php:
+        container_name: alaid_php
+        restart: always
+        build: ./php/
+        ports:
+          - 25:25
+        expose:
+          - 9000
+        volumes:
+          - ..:/alaid
+          - ./php/conf/ssmtp.conf:/etc/ssmtp/ssmtp.conf:ro
+          - ./php/conf/php-mail.conf:/usr/local/etc/php/conf.d/mail.ini:ro
+    mysql:
+        container_name: alaid_db
+        command: ['--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
+        restart: always
+        image: mysql:5.6
+        ports:
+          - 3306:3306
+        expose:
+          - 3306
+        volumes:
+          - ./mysql/data:/var/lib/mysql
+          - ./mysql/mysql.cnf:/etc/mysql/mysql.conf.d/conf-mysql.cnf:ro
+        environment:
+          MYSQL_DATABASE: alaid
+          MYSQL_ROOT_PASSWORD: temp0raryp@ssword!
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
