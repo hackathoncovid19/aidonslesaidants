@@ -7,7 +7,7 @@ use Twig\Environment;
 
 use Laminas\Hydrator\ObjectPropertyHydrator;
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Ticket;
@@ -34,6 +34,7 @@ class TicketController
      */
     public function __construct(Environment $twig, ObjectPropertyHydrator $hydrator)
     {
+        $this->twig = $twig;
         $this->hydrator = $hydrator;
     }
 
@@ -45,14 +46,15 @@ class TicketController
      */
     public function view(Ticket $ticket)
     {
-        return $this->twig->render('ticket/view.html.twig');
+        return new Response($this->twig->render('ticket/view.html.twig'));
+
     }
 
     /**
      * @Route("/new", name="edit", methods={"GET","POST"})
      * @param Request $request
      */
-    public function create(Request $request)
+    public function create()
     {
 
     }
@@ -62,7 +64,7 @@ class TicketController
      * @param Request $request
      * @param Ticket $ticket
      */
-    public function edit(Request $request, Ticket $ticket)
+    public function edit(Ticket $ticket)
     {
 
     }
@@ -72,7 +74,7 @@ class TicketController
      * @param Request $request
      * @param Ticket $ticket
      */
-    public function delete(Request $request, Ticket $ticket)
+    public function delete(Ticket $ticket)
     {
 
     }
@@ -81,7 +83,7 @@ class TicketController
      * @Route("/list", name="list", methods={"GET"})
      * @param Request $request
      */
-    public function list(Request $request)
+    public function list()
     {
 
     }
