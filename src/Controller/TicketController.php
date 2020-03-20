@@ -2,10 +2,9 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Twig\Environment;
-
-use Laminas\Hydrator\ObjectPropertyHydrator;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,24 +17,27 @@ use App\Entity\Ticket;
 class TicketController
 {
     /**
-     * @var ObjectPropertyHydrator
-     */
-    private $hydrator;
-
-    /**
      * @var Environment
      */
     private $twig;
 
     /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    /**
      * TicketController constructor.
      * @param Environment $twig
-     * @param ObjectPropertyHydrator $hydrator
+     * @param EntityManagerInterface $entityManager
      */
-    public function __construct(Environment $twig, ObjectPropertyHydrator $hydrator)
+    public function __construct(
+        Environment $twig,
+        EntityManagerInterface $entityManager
+    )
     {
         $this->twig = $twig;
-        $this->hydrator = $hydrator;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -46,32 +48,35 @@ class TicketController
      */
     public function view(Ticket $ticket)
     {
-        return new Response($this->twig->render('ticket/view.html.twig'));
-
+        return new Response($this->twig->render('ticket/view.html.twig', [
+            'ticket' => $ticket
+        ]));
     }
 
     /**
      * @Route("/new", name="edit", methods={"GET","POST"})
-     * @param Request $request
+     * @throws Exception
      */
     public function create()
     {
-
+        return new Response($this->twig->render('ticket/create.html.twig'));
     }
 
     /**
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
-     * @param Request $request
      * @param Ticket $ticket
+     * @return Response
+     * @throws Exception
      */
     public function edit(Ticket $ticket)
     {
-
+        return new Response($this->twig->render('ticket/edit.html.twig', [
+            'ticket' => $ticket
+        ]));
     }
 
     /**
      * @Route("/delete/{id}", name="delete", methods={"DELETE"})
-     * @param Request $request
      * @param Ticket $ticket
      */
     public function delete(Ticket $ticket)
@@ -81,10 +86,14 @@ class TicketController
 
     /**
      * @Route("/list", name="list", methods={"GET"})
-     * @param Request $request
+     * @throws Exception
      */
     public function list()
     {
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findAll();
 
+        return new Response($this->twig->render('ticket/list.html.twig', [
+            'tickets' => $tickets
+        ]));
     }
 }
