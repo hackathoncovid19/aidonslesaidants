@@ -11,6 +11,7 @@ RUN set -ex; \
 	apt-get update; \
 	apt-get install -y \
         libmcrypt-dev \
+        zip unzip \
         ssmtp; \
 	\
 	rm -rf /var/lib/apt/lists/*; \
