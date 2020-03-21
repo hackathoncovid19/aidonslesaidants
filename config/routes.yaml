@@ -1,0 +1,3 @@
+alaid_register:
+    path: /register
+    controller: App\Controller\RegisterController::registerAction
