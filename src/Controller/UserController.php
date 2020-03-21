@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use App\Entity\User;
 use App\Form\UserType;
@@ -40,27 +42,65 @@ class UserController
     private $router;
 
     /**
+     * @var AuthorizationCheckerInterface
+     */
+    private $authenticationChecker;
+
+
+    /**
+     * @var AuthenticationUtils
+     */
+    private $authenticationUtils;
+
+    /**
      * UserController constructor.
      * @param Environment $twig
      * @param EntityManagerInterface $entityManager
      * @param FormFactoryInterface $formFactory
-     * @param RouterInterface $router
+     * @param RouterInterface $router ,
+     * @param AuthorizationCheckerInterface $authenticationChecker
+     * @param AuthenticationUtils $authenticationUtils
      */
     public function __construct(
         Environment $twig,
         EntityManagerInterface $entityManager,
         FormFactoryInterface $formFactory,
-        RouterInterface $router
+        RouterInterface $router,
+        AuthorizationCheckerInterface $authenticationChecker,
+        AuthenticationUtils $authenticationUtils
     )
     {
         $this->twig = $twig;
         $this->entityManager = $entityManager;
         $this->formFactory = $formFactory;
         $this->router = $router;
+        $this->authenticationChecker = $authenticationChecker;
+        $this->authenticationUtils = $authenticationUtils;
     }
 
     /**
-     * @Route("/{id}", name="view", methods={"GET"})
+     * @Route("/connect", name="login", methods={"GET","POST"})
+     * @return Response
+     * @throws Exception
+     */
+    public function login() : Response
+    {
+        /*if ($this->authenticationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return new RedirectResponse('/', 302);
+        }*/
+
+        $content = $this->twig->render('user/login.html.twig', array(
+            'last_username' => $this->authenticationUtils->getLastUsername(),
+            'error'         => $this->authenticationUtils->getLastAuthenticationError(),
+            'page'          => 'login',
+        ));
+
+        return new Response($content);
+    }
+
+
+    /**
+     * @Route("/view/{id}", name="view", methods={"GET"})
      * @param User $user
      * @return string
      * @throws Exception
