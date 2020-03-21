@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aidons les aidants{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/ticket/list.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-sm">
+        <div id="headForm">
+            <h2 class="text-center text-uppercase pt-5">liste de demandes</h2>
+        </div>
+        {% block preface %}
+            <div class="d-flex flex-row-reverse mr-3">
+                <a href="{{ path('ticket_create') }}" class="btn btn-perso mt-4 mb-4">Créer une demande
+                    <strong>
+                        <i class="fas fa-plus ml-3"></i>
+                    </strong>
+                </a>
+            </div>
+        {% endblock %}
+
+        {% for ticket in tickets %}
+            <div class="shadow p-3 mb-5 bg-{{ status[ticket.status].cssClass }} text-{{ status[ticket.status].cssClass }} rounded mr-3 ml-3">
+                <a href="{{ path('ticket_create') }}" class="row ticket-link">
+                    <div class="col-8">
+                        <p class="my-auto">{{ ticket.title }}</p>
+                    </div>
+                    <div class="col-4 border-perso-{{ status[ticket.status].cssClass }}">
+                        <p class="text-center my-auto text-{{ status[ticket.status].cssClass }}">{{ status[ticket.status].name }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

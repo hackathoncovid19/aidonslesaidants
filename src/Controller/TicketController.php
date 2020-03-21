@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Enum\TicketStatusEnum;
 use Exception;
+use Symfony\Component\Security\Core\Security;
 use Twig\Environment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -40,6 +42,11 @@ class TicketController
     private $router;
 
     /**
+     * @var Security
+     */
+    private $security;
+
+    /**
      * TicketController constructor.
      * @param Environment $twig
      * @param EntityManagerInterface $entityManager
@@ -50,17 +57,19 @@ class TicketController
         Environment $twig,
         EntityManagerInterface $entityManager,
         FormFactoryInterface $formFactory,
-        RouterInterface $router
+        RouterInterface $router,
+        Security $security
     )
     {
         $this->twig = $twig;
         $this->entityManager = $entityManager;
         $this->formFactory = $formFactory;
         $this->router = $router;
+        $this->security = $security;
     }
 
     /**
-     * @Route("/{id}", name="view", methods={"GET"})
+     * @Route("/view/{id}", name="view", methods={"GET"})
      * @param Ticket $ticket
      * @return string
      * @throws Exception
@@ -73,7 +82,25 @@ class TicketController
     }
 
     /**
-     * @Route("/new", name="edit", methods={"GET","POST"})
+     * @Route("/list-by-user", name="view_user_list", methods={"GET"})
+     * @return Response
+     * @throws Exception
+     */
+    public function viewAllByUser()
+    {
+        $user = $this->security->getUser();
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findByUser($user, ['status', 'ASC']);
+
+        $status = TicketStatusEnum::TICKET_STATUS_DATA;
+
+        return new Response($this->twig->render('ticket/list.html.twig', [
+            'tickets' => $tickets,
+            'status'  => $status,
+        ]));
+    }
+
+    /**
+     * @Route("/new", name="create", methods={"GET","POST"})
      * @throws Exception
      */
     public function create()
