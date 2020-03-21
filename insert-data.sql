@@ -8,7 +8,6 @@
     * https://www.generatedata.com/?lang=fr#t1
 */
 
-
 SELECT  'suppression des données' AS message;
 DELETE FROM ticket;
 DELETE FROM user;
