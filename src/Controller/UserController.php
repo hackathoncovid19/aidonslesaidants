@@ -60,7 +60,28 @@ class UserController
     }
 
     /**
-     * @Route("/{id}", name="view", methods={"GET"})
+     * @Route("/connect", name="login", methods={"GET","POST"})
+     * @return Response
+     * @throws Exception
+     */
+    public function login() : Response
+    {
+        if ($this->authenticationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return new RedirectResponse('/', 302);
+        }
+
+        $content = $this->twig->render('user/login.html.twig', array(
+            'last_username' => $this->authenticationUtils->getLastUsername(),
+            'error'         => $this->authenticationUtils->getLastAuthenticationError(),
+            'page'          => 'login',
+        ));
+
+        return new Response($content);
+    }
+
+
+    /**
+     * @Route("/view/{id}", name="view", methods={"GET"})
      * @param User $user
      * @return string
      * @throws Exception
