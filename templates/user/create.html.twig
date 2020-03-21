@@ -1,1 +1,33 @@
 {% include('base.html.twig') %}
+
+{% block title %}Aidons les aidants{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/user/create.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+    <body>
+    <div class="container-sm">
+        <div id="headForm">
+				<h2 class="text-center text-uppercase pt-5">inscription</h2>
+
+			</div>
+			<form name="inscription" class="m-5">
+				<div class="form-group">
+					<input type="text" class="form-control" id="pseudo" placeholder="Pseudonyme" required>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" id="password" placeholder="Mot de passe" required>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" id="confirmPassword" placeholder="Confirmation du mot de passe" required>
+				</div>
+
+				<p>Veillez à ne pas oublier vos logins et mot de passe car il n'existe pas de système de récupération.</p>
+				<div class="row mt-3">
+					<button class="btn btn-perso mx-auto" type="submit">VALIDER</button>
+				</div>
+			</form>
+
+		</body>
+ {% endblock %}

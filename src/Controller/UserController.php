@@ -28,20 +28,7 @@ class UserController
      */
     private $twig;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
 
-    /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var RouterInterface
-     */
-    private $router;
 
     /**
      * @var AuthorizationCheckerInterface
@@ -109,16 +96,14 @@ class UserController
      */
     public function view(User $user)
     {
-        return new Response($this->twig->render('user/view.html.twig', [
-            'user' => $user
-        ]));
+
     }
 
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
      * @throws Exception
      */
-    public function create()
+    public function createAction()
     {
         return new Response($this->twig->render('user/create.html.twig'));
     }
