@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -56,6 +57,11 @@ class TicketType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Merci de saisir votre contact'])
+                ]
+            ])
+            ->add('valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-perso mx-auto rounded-0'
                 ]
             ]);
     }
