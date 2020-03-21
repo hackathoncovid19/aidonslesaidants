@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Exception;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Twig\Environment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -40,6 +42,11 @@ class TicketController
     private $router;
 
     /**
+     * @var Security
+     */
+    private $security;
+
+    /**
      * TicketController constructor.
      * @param Environment $twig
      * @param EntityManagerInterface $entityManager
@@ -50,13 +57,15 @@ class TicketController
         Environment $twig,
         EntityManagerInterface $entityManager,
         FormFactoryInterface $formFactory,
-        RouterInterface $router
+        RouterInterface $router,
+        Security $security
     )
     {
         $this->twig = $twig;
         $this->entityManager = $entityManager;
         $this->formFactory = $formFactory;
         $this->router = $router;
+        $this->security = $security;
     }
 
     /**
@@ -76,9 +85,27 @@ class TicketController
      * @Route("/new", name="edit", methods={"GET","POST"})
      * @throws Exception
      */
-    public function create()
+    public function create(Request $request)
     {
-        return new Response($this->twig->render('ticket/create.html.twig'));
+        $ticket = new Ticket();
+        $form = $this->formFactory
+            ->createNamedBuilder('newDemande', TicketType::class, $ticket, ['block_name' => 'newDemande'])
+            ->getForm()
+            ->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ticket->setUser($this->security->getUser());
+            $this->entityManager->persist($ticket);
+            $this->entityManager->flush();
+
+            $request->getSession()->getFlashBag()->add('success', 'Votre demande a bien été enregistrée !');
+
+            return new RedirectResponse($this->router->generate('view', ['id' => 1]));
+        }
+
+        return new Response($this->twig->render('ticket/create.html.twig', [
+            'form' => $form->createView(),
+        ]));
     }
 
     /**
