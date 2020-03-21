@@ -82,7 +82,7 @@ class TicketController
     }
 
     /**
-     * @Route("/new", name="edit", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      * @throws Exception
      */
     public function create(Request $request)
@@ -98,9 +98,9 @@ class TicketController
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
-            $request->getSession()->getFlashBag()->add('success', 'Votre demande a bien été enregistrée !');
+            $request->getSession()->getFlashBag()->add('notice', 'Votre demande a bien été enregistrée !');
 
-            return new RedirectResponse($this->router->generate('view', ['id' => 1]));
+            return new RedirectResponse($this->router->generate('ticket_list'));
         }
 
         return new Response($this->twig->render('ticket/create.html.twig', [
