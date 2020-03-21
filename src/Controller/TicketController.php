@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Exception;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -17,7 +19,7 @@ use App\Form\TicketType;
 /**
  * @Route("/ticket", name="ticket_")
  */
-class TicketController
+class TicketController extends AbstractController
 {
     /**
      * @var Environment
@@ -76,9 +78,27 @@ class TicketController
      * @Route("/new", name="edit", methods={"GET","POST"})
      * @throws Exception
      */
-    public function create()
+    public function create(Request $request)
     {
-        return new Response($this->twig->render('ticket/create.html.twig'));
+        $ticket = new Ticket();
+        $form = $this->formFactory
+            ->createNamedBuilder('newDemande', TicketType::class, $ticket, ['block_name' => 'newDemande'])
+            ->getForm()
+            ->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //$ticket->setUser($this->getUser());
+            $this->entityManager->persist($ticket);
+            $this->entityManager->flush();
+
+            $this->addFlash('success', 'Votre demande a bien été enregistrée !');
+
+            $this->redirectToRoute('view', ['id' => 1]);
+        }
+
+        return $this->render('ticket/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
