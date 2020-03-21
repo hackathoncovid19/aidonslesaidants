@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use Exception;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Twig\Environment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -19,7 +19,7 @@ use App\Form\TicketType;
 /**
  * @Route("/ticket", name="ticket_")
  */
-class TicketController extends AbstractController
+class TicketController
 {
     /**
      * @var Environment
@@ -42,6 +42,11 @@ class TicketController extends AbstractController
     private $router;
 
     /**
+     * @var Security
+     */
+    private $security;
+
+    /**
      * TicketController constructor.
      * @param Environment $twig
      * @param EntityManagerInterface $entityManager
@@ -52,13 +57,15 @@ class TicketController extends AbstractController
         Environment $twig,
         EntityManagerInterface $entityManager,
         FormFactoryInterface $formFactory,
-        RouterInterface $router
+        RouterInterface $router,
+        Security $security
     )
     {
         $this->twig = $twig;
         $this->entityManager = $entityManager;
         $this->formFactory = $formFactory;
         $this->router = $router;
+        $this->security = $security;
     }
 
     /**
@@ -87,18 +94,18 @@ class TicketController extends AbstractController
             ->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //$ticket->setUser($this->getUser());
+            $ticket->setUser($this->security->getUser());
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
-            $this->addFlash('success', 'Votre demande a bien été enregistrée !');
+            $request->getSession()->getFlashBag()->add('success', 'Votre demande a bien été enregistrée !');
 
-            $this->redirectToRoute('view', ['id' => 1]);
+            return new RedirectResponse($this->router->generate('view', ['id' => 1]));
         }
 
-        return $this->render('ticket/create.html.twig', [
+        return new Response($this->twig->render('ticket/create.html.twig', [
             'form' => $form->createView(),
-        ]);
+        ]));
     }
 
     /**
