@@ -1,2 +1,5 @@
 user_login_check:
   path: /login_check
+alaid_register:
+    path: /register
+    controller: App\Controller\RegisterController::registerAction
