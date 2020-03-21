@@ -1,7 +1,1 @@
-{
-  “scripts”: {
-    “dokku”: {
-      “predeploy”: “php bin/console doctrine:migrations:migrate --allow-no-migration --no-interaction”
-    }
-  }
-}
+web: $(composer config bin-dir)/heroku-php-nginx -C nginx.conf public
