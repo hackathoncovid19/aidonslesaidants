@@ -1,0 +1,37 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+            cost:      10
+    providers:
+        database:
+            entity:
+                class: App\Entity\User
+                property: username
+
+    role_hierarchy:
+        ROLE_SUPERUSER: [ROLE_USER, ROLE_ADMIN]
+
+    firewalls:
+        assets_and_debug:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        user_control:
+            user_checker: App\Service\UserChecker
+            provider: database
+            anonymous: true
+            guard:
+                authenticators:
+                    - App\Service\AuthenticatorService
+            form_login:
+                login_path: user_login
+                check_path: user_login_check
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path:   user_logout
+                target: homepage
+
+    access_control:
+        - { path: ^/management/, roles: ROLE_ADMIN, requires_channel: http }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
