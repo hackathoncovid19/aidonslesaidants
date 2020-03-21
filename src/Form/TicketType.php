@@ -42,14 +42,14 @@ class TicketType extends AbstractType
                     new NotBlank(['message' => 'Merci de saisir une description'])
                 ]
             ])
-            ->add('contact', NumberType::class, [
+            ->add('postcode', NumberType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Code postal (si la demande ne vaut que pour un lieu géographique donné)'
                 ],
                 'required' => false
             ])
-            ->add('postcode', TextType::class, [
+            ->add('contact', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Contact'
