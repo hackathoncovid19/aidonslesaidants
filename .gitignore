@@ -20,4 +20,3 @@
 
 # composer and symfony lock files
 *.lock
-.docker/docker-compose.yml
