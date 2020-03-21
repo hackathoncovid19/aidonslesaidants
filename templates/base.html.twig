@@ -2,11 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}bienvenu!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body> 
+    <footer>    
+        {% include 'footer.html.twig' %}
+    </footer>
 </html>
