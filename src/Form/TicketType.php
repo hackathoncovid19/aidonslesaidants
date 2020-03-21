@@ -3,17 +3,10 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
-use App\Entity\User;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
 
 class TicketType extends AbstractType
 {
@@ -42,14 +35,14 @@ class TicketType extends AbstractType
                     new NotBlank(['message' => 'Merci de saisir une description'])
                 ]
             ])
-            ->add('contact', NumberType::class, [
+            ->add('postcode', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Code postal (si la demande ne vaut que pour un lieu géographique donné)'
                 ],
                 'required' => false
             ])
-            ->add('postcode', TextType::class, [
+            ->add('contact', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Contact'
@@ -58,14 +51,5 @@ class TicketType extends AbstractType
                     new NotBlank(['message' => 'Merci de saisir votre contact'])
                 ]
             ]);
-    }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'attr' => [
-                'class' => 'm-5'
-            ]
-        ]);
     }
 }
