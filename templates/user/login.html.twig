@@ -16,6 +16,19 @@
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
+        <section>
+            <p>
+                ALAID a pour vocation d'aider les professionnel.le.s du corps médical investi.e.s dans la mobilisation nationale pour lutter contre le COVID-19.
+                Conscient de leur charge de travail, cette application ne s'adresse pas à eux directement, mais à vous, leurs proches car vous connaissez vous aussi le quotidien difficile des soignant.e.s et disposez surement de plus de temps pour faire le lien avec des bénévoles citoyens cherchant à répondre à leurs besoins.
+            </p>
+            <p>
+                En tant que proche d'"aidant.e.s", inscrivez-vous et connectez-vous pour ajouter des demandes de soignants de votre entourage à destination des bénévoles. Les bénévoles verront ses demandes sur une autre interface [URL front] et pourront s'organiser auprès de vous pour y répondre.
+            </p>
+            <p>
+                Merci de ne partager l'adresse de ce site qu'à d'autres proches de professionnel.le.s du corps médical que vous connaissez vous-même personnellement.
+            </p>
+        </section>
+
         <form action="{{ path('user_login_check') }}" method="post">
             <div class="form-group">
                 <input type="text" value="{{ last_username }}" name="username" id="username" class="form-control" placeholder="username" required autofocus>
