@@ -1,0 +1,2 @@
+user_login_check:
+  path: /login_check
