@@ -69,7 +69,7 @@ class TicketController
     }
 
     /**
-     * @Route("/{id}", name="view", methods={"GET"})
+     * @Route("/view/{id}", name="view", methods={"GET"})
      * @param Ticket $ticket
      * @return string
      * @throws Exception
