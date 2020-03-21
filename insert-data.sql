@@ -13,21 +13,21 @@ DELETE FROM ticket;
 DELETE FROM user;
 
 SELECT 'insertion donnée user' AS message;
-INSERT INTO user (id,username,password,roles) VALUES (1,"muriel.user","ad167fa654f27bb3707f76cf506508f6","user");
-INSERT INTO user (id,username,password,roles) VALUES (2,"maura.user","ad167fa654f27bb3707f76cf506508f6","user");
-INSERT INTO user (id,username,password,roles) VALUES (3,"emmanuel.user","ad167fa654f27bb3707f76cf506508f6","user");
-INSERT INTO user (id,username,password,roles) VALUES (4,"nes.user","ad167fa654f27bb3707f76cf506508f6","user");
-INSERT INTO user (id,username,password,roles) VALUES (5,"samuel.user","ad167fa654f27bb3707f76cf506508f6","user");
-INSERT INTO user (id,username,password,roles) VALUES (6,"guillaume.user","ad167fa654f27bb3707f76cf506508f6","user");
-INSERT INTO user (id,username,password,roles) VALUES (7,"marion.user","ad167fa654f27bb3707f76cf506508f6","user");
+INSERT INTO user (id,username,password,roles) VALUES (1,"muriel.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
+INSERT INTO user (id,username,password,roles) VALUES (2,"maura.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
+INSERT INTO user (id,username,password,roles) VALUES (3,"emmanuel.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
+INSERT INTO user (id,username,password,roles) VALUES (4,"nes.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
+INSERT INTO user (id,username,password,roles) VALUES (5,"samuel.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
+INSERT INTO user (id,username,password,roles) VALUES (6,"guillaume.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
+INSERT INTO user (id,username,password,roles) VALUES (7,"marion.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
 
-INSERT INTO user (id,username,password,roles) VALUES (8,"muriel.admin","ad167fa654f27bb3707f76cf506508f6","admin");
-INSERT INTO user (id,username,password,roles) VALUES (9,"maura.admin","ad167fa654f27bb3707f76cf506508f6","admin");
-INSERT INTO user (id,username,password,roles) VALUES (10,"emmanuel.admin","ad167fa654f27bb3707f76cf506508f6","admin");
-INSERT INTO user (id,username,password,roles) VALUES (11,"nes.admin","ad167fa654f27bb3707f76cf506508f6","admin");
-INSERT INTO user (id,username,password,roles) VALUES (12,"samuel.admin","ad167fa654f27bb3707f76cf506508f6","admin");
-INSERT INTO user (id,username,password,roles) VALUES (13,"guillaume.admin","ad167fa654f27bb3707f76cf506508f6","admin");
-INSERT INTO user (id,username,password,roles) VALUES (14,"marion.admin","ad167fa654f27bb3707f76cf506508f6","admin");
+INSERT INTO user (id,username,password,roles) VALUES (8,"muriel.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
+INSERT INTO user (id,username,password,roles) VALUES (9,"maura.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
+INSERT INTO user (id,username,password,roles) VALUES (10,"emmanuel.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
+INSERT INTO user (id,username,password,roles) VALUES (11,"nes.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
+INSERT INTO user (id,username,password,roles) VALUES (12,"samuel.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
+INSERT INTO user (id,username,password,roles) VALUES (13,"guillaume.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
+INSERT INTO user (id,username,password,roles) VALUES (14,"marion.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
 
 SELECT 'insertion donnée ticket' AS message;
 INSERT INTO ticket (id,user_id,title,description,postcode,contact,status) VALUES (1,5,"Elmo","arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum","2286","Suspendisse@congueelit.ca",3);
