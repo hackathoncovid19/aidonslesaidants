@@ -34,11 +34,10 @@
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
 
-        {% block help %}
-            <div class="shadow p-3 mt-5 mb-5 bg-white rounded mr-3 ml-3">
+        {% block help %}            
                 <p>Il n'y a pas d'autres besoins de professionnel.le.s du corps médical remontés pour le moment mais n'hésitez pas à revenir plus tard ou à proposer votre aide à d'autres personnes dans le besoin via nos partenaires
 					<a href="https://enpremiereligne.fr/">en première ligne</a> et <a href="https://covidaire.fr/">Covidaire, tous solidaires</a> !</p>
-            </div>
+            
         {% endblock %}
 
         {% for ticket in tickets.others %}
