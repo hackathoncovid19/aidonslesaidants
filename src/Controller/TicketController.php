@@ -197,6 +197,11 @@ class TicketController
             $ticket->setStatus($status);
         }        
 
+        foreach ($tickets as &$ticket) {
+            $status = $this->statusCheckerService->getStatus($ticket->getAssignedDate(), $ticket->getResolvedDate());
+            $ticket->setStatus($status);
+        }        
+
         return new Response($this->twig->render('ticket/list.html.twig', [
             'tickets' => $tickets,
             'status'  => $status,

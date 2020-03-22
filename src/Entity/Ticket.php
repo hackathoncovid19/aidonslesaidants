@@ -17,11 +17,6 @@ class Ticket
     private $id;
 
     /**
-     * @ORM\Column(type="integer", nullable=false)
-     */
-    private $status;
-
-    /**
      * @ORM\Column(type="string", length=150)
      */
     private $title;
@@ -55,8 +50,10 @@ class Ticket
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $resolvedDate;
-
     
+    /**
+     * @var int
+     */
     private $status;
 
     /**
@@ -130,9 +127,7 @@ class Ticket
         return $this;
     }
 
-<<<<<<< HEAD
-    public function getStatus(): int
-=======
+
     public function geCreationDate(): ?User
     {
         return $this->creationDate;
@@ -170,16 +165,11 @@ class Ticket
     }
 
     public function getStatus(): ?int
->>>>>>> Feat/
     {
         return $this->status;
     }
 
-<<<<<<< HEAD
     public function setStatus(int $status): self
-=======
-    public function setStatus(?int $status): self
->>>>>>> Feat/
     {
         $this->status = $status;
 
