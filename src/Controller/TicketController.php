@@ -50,8 +50,6 @@ class TicketController
      */
     private $security;
 
-    private $ticketService;
-
     /**
      * TicketController constructor.
      * @param Environment $twig
@@ -64,8 +62,7 @@ class TicketController
         EntityManagerInterface $entityManager,
         FormFactoryInterface $formFactory,
         RouterInterface $router,
-        Security $security,
-        TicketService $ticketService 
+        Security $security
     )
     {
         $this->twig = $twig;
@@ -73,7 +70,6 @@ class TicketController
         $this->formFactory = $formFactory;
         $this->router = $router;
         $this->security = $security;
-        $this->ticketService = $ticketService;
     }
 
     /**
@@ -84,12 +80,6 @@ class TicketController
      */
     public function view(Ticket $ticket)
     {
-        $assignedDate = $ticket->getAssignedDate();
-        $resolvedDate = $ticket->getResolvedDate();
-
-        $status = $this->ticketService->getStatus($assignedDate, $resolvedDate);
-        $ticket->setStatus($status);
-
         return new Response($this->twig->render('ticket/view.html.twig', [
             'ticket' => $ticket
         ]));
@@ -197,11 +187,11 @@ class TicketController
             $assignedDate = $ticket->getAssignedDate();
             $resolvedDate = $ticket->getResolvedDate();
 
-            $statusInt = $this->ticketService->getStatus($assignedDate, $resolvedDate);
+            $statusInt = TicketService::getStatus($assignedDate, $resolvedDate);
             $ticket->setStatus($statusInt);
         } 
 
-        $tickets = $this->ticketService->orderTickets($tickets);        
+        $tickets = TicketService::orderTickets($tickets);
 
         return new Response($this->twig->render('ticket/list.html.twig', [
             'tickets' => $tickets,

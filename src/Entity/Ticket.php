@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Service\TicketService;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 
@@ -65,7 +66,7 @@ class Ticket
 
     public function __construct()
     {
-        $this->creationDate = new DateTime(); 
+        $this->creationDate = new \DateTime();
     }
 
     public function getId(): ?int
@@ -175,10 +176,9 @@ class Ticket
         return $this->status;
     }
 
-    public function setStatus(int $status): self
+    public function setStatus(): self
     {
-        $this->status = $status;
-
+        $this->status = TicketService::getStatus($this->getAssignedDate(), $this->getResolvedDate());
         return $this;
     }
 }

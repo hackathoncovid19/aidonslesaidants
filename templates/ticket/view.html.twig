@@ -22,9 +22,9 @@
                 {% endif %}
 
                 <p class="card-text">Contact : {{ ticket.contact }}</p>
-                <p class="card-text">Crée le : {{ ticket.creationDate|date("m/d/Y", "Europe/Paris") }}</p>
+                <p class="card-text">Crée le : {{ ticket.creationDate|date("d/m/Y", "Europe/Paris") }}</p>
                 <div class="d-flex flex-row-reverse">
-                    <a href="#" class="btn btn-perso">Retour à la liste des demandes</a>
+                    <a href="{{ path('ticket_list') }}" class="btn btn-perso">Retour à la liste des demandes</a>
                 </div>
             </div>
         </div>
