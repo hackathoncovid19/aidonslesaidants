@@ -94,7 +94,6 @@ class TicketController
         $user = $this->security->getUser();
         $tickets = $this->entityManager->getRepository(Ticket::class)->findByUser($user, ['status' => 'ASC']);
 
-        dump($tickets);
         $tickets = $this->orderTickets($tickets);
         $status = TicketStatusEnum::TICKET_STATUS_DATA;
 
