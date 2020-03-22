@@ -12,8 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 use App\Entity\Ticket;
+use App\Enum\TicketStatusEnum;
 use App\Form\TicketType;
 
 /**
@@ -82,25 +84,51 @@ class TicketController
     }
 
     /**
-     * @Route("/new", name="new", methods={"GET","POST"})
+     * @Route("/list-by-user", name="view_user_list", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     *
+     * @return Response
+     * @throws Exception
+     */
+    public function viewAllByUser()
+    {
+        $user = $this->security->getUser();
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findByUser($user, ['status' => 'ASC']);
+
+        $tickets = $this->orderTickets($tickets);
+        $status = TicketStatusEnum::TICKET_STATUS_DATA;
+
+        return new Response($this->twig->render('ticket/list_by_user.html.twig', [
+            'tickets' => $tickets,
+            'status'  => $status,
+        ]));
+    }
+
+    /**
+     * @Route("/new", name="create", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
+     *
+     * @param Request $request
+     * @return Response
      * @throws Exception
      */
     public function create(Request $request)
     {
         $ticket = new Ticket();
         $form = $this->formFactory
-            ->createNamedBuilder('newDemande', TicketType::class, $ticket, ['block_name' => 'newDemande'])
+            ->createNamedBuilder('newDemande', TicketType::class, $ticket)
             ->getForm()
             ->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ticket->setUser($this->security->getUser());
+            $ticket->setStatus(TicketStatusEnum::TICKET_STATUS_OPEN);
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
             $request->getSession()->getFlashBag()->add('notice', 'Votre demande a bien été enregistrée !');
 
-            return new RedirectResponse($this->router->generate('ticket_list'));
+            return new RedirectResponse($this->router->generate('ticket_view_user_list', ['id' => 1]));
         }
 
         return new Response($this->twig->render('ticket/create.html.twig', [
@@ -150,10 +178,43 @@ class TicketController
      */
     public function list()
     {
-        $tickets = $this->entityManager->getRepository(Ticket::class)->findAll();
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findAllOrderByStatus();
+
+        $tickets = $this->orderTickets($tickets);
+        $status = TicketStatusEnum::TICKET_STATUS_DATA;
 
         return new Response($this->twig->render('ticket/list.html.twig', [
-            'tickets' => $tickets
+            'tickets' => $tickets,
+            'status'  => $status,
         ]));
+    }
+
+    /**
+     *
+     *
+     * PRIVATE
+     *
+     */
+
+    /**
+     * @param Ticket[] $tickets
+     * @return array
+     */
+    private function orderTickets(array $tickets): array
+    {
+        $return = [
+            'open'   => [],
+            'others' => []
+        ];
+
+        foreach ($tickets as $ticket) {
+            if ($ticket->getStatus() === TicketStatusEnum::TICKET_STATUS_OPEN) {
+                $return['open'][] = $ticket;
+            } else {
+                $return['others'][] = $ticket;
+            }
+        }
+
+        return $return;
     }
 }

@@ -17,6 +17,11 @@ class Ticket
     private $id;
 
     /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $status;
+
+    /**
      * @ORM\Column(type="string", length=150)
      */
     private $title;
@@ -103,6 +108,18 @@ class Ticket
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
