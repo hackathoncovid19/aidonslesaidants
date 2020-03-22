@@ -173,12 +173,12 @@ class Ticket
 
     public function getStatus(): ?int
     {
-        return $this->status;
+        return TicketService::getStatus($this->getAssignedDate(), $this->getResolvedDate());
     }
 
-    public function setStatus(): self
+    public function setStatus(?int $status): self
     {
-        $this->status = TicketService::getStatus($this->getAssignedDate(), $this->getResolvedDate());
+        $this->status = $status;
         return $this;
     }
 }

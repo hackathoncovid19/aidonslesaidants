@@ -94,9 +94,9 @@ class TicketController
     public function viewAllByUser()
     {
         $user = $this->security->getUser();
-        $tickets = $this->entityManager->getRepository(Ticket::class)->findByUser($user, ['status' => 'ASC']);
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findByUser($user, ['creationDate' => 'ASC']);
 
-        $tickets = $this->orderTickets($tickets);
+        $tickets = TicketService::orderTickets($tickets);
         $status = TicketStatusEnum::TICKET_STATUS_DATA;
 
         return new Response($this->twig->render('ticket/list_by_user.html.twig', [
