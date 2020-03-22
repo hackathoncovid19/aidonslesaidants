@@ -18,6 +18,8 @@ use App\Entity\Ticket;
 use App\Enum\TicketStatusEnum;
 use App\Form\TicketType;
 
+use App\Service\StatusCheckerService;
+
 /**
  * @Route("/ticket", name="ticket_")
  */
@@ -48,6 +50,8 @@ class TicketController
      */
     private $security;
 
+    private $statusCheckerService;
+
     /**
      * TicketController constructor.
      * @param Environment $twig
@@ -60,7 +64,8 @@ class TicketController
         EntityManagerInterface $entityManager,
         FormFactoryInterface $formFactory,
         RouterInterface $router,
-        Security $security
+        Security $security,
+        StatusCheckerService $StatusCheckerService 
     )
     {
         $this->twig = $twig;
@@ -68,6 +73,7 @@ class TicketController
         $this->formFactory = $formFactory;
         $this->router = $router;
         $this->security = $security;
+        $this->statusCheckerService = $StatusCheckerService;
     }
 
     /**
@@ -78,6 +84,9 @@ class TicketController
      */
     public function view(Ticket $ticket)
     {
+        $status = $this->statusCheckerService->getStatus($ticket->getAssignedDate(), $ticket->getResolvedDate());
+        $ticket->setStatus($status);
+
         return new Response($this->twig->render('ticket/view.html.twig', [
             'ticket' => $ticket
         ]));
@@ -182,6 +191,11 @@ class TicketController
 
         $tickets = $this->orderTickets($tickets);
         $status = TicketStatusEnum::TICKET_STATUS_DATA;
+
+        foreach ($tickets as &$ticket) {
+            $status = $this->statusCheckerService->getStatus($ticket->getAssignedDate(), $ticket->getResolvedDate());
+            $ticket->setStatus($status);
+        }        
 
         return new Response($this->twig->render('ticket/list.html.twig', [
             'tickets' => $tickets,

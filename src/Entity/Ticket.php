@@ -41,6 +41,24 @@ class Ticket
      */
     private $contact;
 
+     /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $creationDate;
+
+     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $assignedDate;
+
+     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $resolvedDate;
+
+    
+    private $status;
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tickets")
      * @ORM\JoinColumn(nullable=false)
@@ -112,12 +130,56 @@ class Ticket
         return $this;
     }
 
+<<<<<<< HEAD
     public function getStatus(): int
+=======
+    public function geCreationDate(): ?User
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate(datetime $creationDate): self
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    public function getAssignedDate(): ?User
+    {
+        return $this->assignedDate;
+    }
+
+    public function setAssignedDate(?datetime $assignedDate): self
+    {
+        $this->assignedDate = $assignedDate;
+
+        return $this;
+    }
+
+    public function getResolvedDate(): ?User
+    {
+        return $this->resolvedDate;
+    }
+
+    public function setResolvedDate(?datetime $resolvedDate): self
+    {
+        $this->resolvedDate = $resolvedDate;
+
+        return $this;
+    }
+
+    public function getStatus(): ?int
+>>>>>>> Feat/
     {
         return $this->status;
     }
 
+<<<<<<< HEAD
     public function setStatus(int $status): self
+=======
+    public function setStatus(?int $status): self
+>>>>>>> Feat/
     {
         $this->status = $status;
 
