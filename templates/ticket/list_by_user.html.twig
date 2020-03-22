@@ -1,0 +1,13 @@
+{% extends 'ticket/list.html.twig' %}
+
+{% block preface %}
+    <div class="d-flex flex-row-reverse mr-3">
+        <a href="{{ path('ticket_create') }}" class="btn btn-perso mt-4 mb-4">Créer une demande
+            <strong>
+                <i class="fas fa-plus ml-3"></i>
+            </strong>
+        </a>
+    </div>
+{% endblock %}
+
+{% block help %}{% endblock %}

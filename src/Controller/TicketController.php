@@ -95,9 +95,10 @@ class TicketController
         $user = $this->security->getUser();
         $tickets = $this->entityManager->getRepository(Ticket::class)->findByUser($user, ['status' => 'ASC']);
 
+        $tickets = $this->orderTickets($tickets);
         $status = TicketStatusEnum::TICKET_STATUS_DATA;
 
-        return new Response($this->twig->render('ticket/list.html.twig', [
+        return new Response($this->twig->render('ticket/list_by_user.html.twig', [
             'tickets' => $tickets,
             'status'  => $status,
         ]));
@@ -174,10 +175,43 @@ class TicketController
      */
     public function list()
     {
-        $tickets = $this->entityManager->getRepository(Ticket::class)->findAll();
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findAllOrderByStatus();
+
+        $tickets = $this->orderTickets($tickets);
+        $status = TicketStatusEnum::TICKET_STATUS_DATA;
 
         return new Response($this->twig->render('ticket/list.html.twig', [
-            'tickets' => $tickets
+            'tickets' => $tickets,
+            'status'  => $status,
         ]));
+    }
+
+    /**
+     *
+     *
+     * PRIVATE
+     *
+     */
+
+    /**
+     * @param Ticket[] $tickets
+     * @return array
+     */
+    private function orderTickets(array $tickets): array
+    {
+        $return = [
+            'open'   => [],
+            'others' => []
+        ];
+
+        foreach ($tickets as $ticket) {
+            if ($ticket->getStatus() === TicketStatusEnum::TICKET_STATUS_OPEN) {
+                $return['open'][] = $ticket;
+            } else {
+                $return['others'][] = $ticket;
+            }
+        }
+
+        return $return;
     }
 }

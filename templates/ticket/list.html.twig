@@ -13,26 +13,50 @@
             <h2 class="text-center text-uppercase pt-5">liste de demandes</h2>
         </div>
         {% block preface %}
-            <div class="d-flex flex-row-reverse mr-3">
-                <a href="{{ path('ticket_create') }}" class="btn btn-perso mt-4 mb-4">Créer une demande
-                    <strong>
-                        <i class="fas fa-plus ml-3"></i>
-                    </strong>
-                </a>
+            <div class="mt-5 mb-2">
+                <p>
+                    ALAID a pour vocation d'aider les professionnel.le.s du corps médical investi.e.s
+                    dans la mobilisation nationale pour lutter contre le COVID-19.
+                    Conscient de leur charge de travail, cette application ne s'adresse pas à
+                    eux directement, mais à leurs proches car ces proches connaissent eux aussi
+                    le quotidien difficile des soignant.e.s et disposent surement de plus de temps pour
+                    faire le lien avec des bénévoles citoyens pour répondre à leurs besoins.
+                </p>
+                <p>
+                    En tant que potentiel bénévole, restez à l'affut des besoins du corps médical via cette page.
+                    Si vous pensez pouvoir répondre à une demande, contactez le proche via le champ prévu à cet effet
+                    dans le détail de la demande. Sinon, merci de partager ce lien à votre entourage !
+                </p>
             </div>
         {% endblock %}
 
-        {% for ticket in tickets %}
-            <div class="shadow p-3 mb-5 bg-{{ status[ticket.status].cssClass }} text-{{ status[ticket.status].cssClass }} rounded mr-3 ml-3">
-                <a href="{{ path('ticket_create') }}" class="row ticket-link">
-                    <div class="col-8">
-                        <p class="my-auto">{{ ticket.title }}</p>
-                    </div>
-                    <div class="col-4 border-perso-{{ status[ticket.status].cssClass }}">
-                        <p class="text-center my-auto text-{{ status[ticket.status].cssClass }}">{{ status[ticket.status].name }}</p>
-                    </div>
-                </a>
+        {% for ticket in tickets.open %}
+            {{ include('ticket/_ticket_card.html.twig') }}
+        {% endfor %}
+
+        {% block help %}
+            <div class="shadow p-3 mt-5 mb-5 bg-white rounded mr-3 ml-3">
+                <p class="pl-5">Actuellement il n'y a plus de demande Ouverte.</p>
+                <p class="pl-5">Si vous recherchez de l'aide ou proposez votre aide :</p>
+                <ul class="pl-5 list-group-flush">
+                    <li class="list-group-item">
+                        <a href="https://covidaire.fr/">Covidaire, tous solidaires</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://enpremiereligne.fr/">En première ligne</a>
+                    </li>
+                </ul>
+                <p class="pl-5">Pour recenser les entreprises volontaires sur le territoire :</p>
+                <ul class="pl-5 list-group-flush">
+                    <li class="list-group-item">
+                        <a href="https://www.solidaritecovid.fr/">Solidarité COVID, les entreprises se mobilisent</a>
+                    </li>
+                </ul>
             </div>
+        {% endblock %}
+
+        {% for ticket in tickets.others %}
+            {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
     </div>
 {% endblock %}
