@@ -8,28 +8,28 @@
     * https://www.generatedata.com/?lang=fr#t1
 */
 
-SELECT  'suppression des données' AS message;
+SELECT  ''suppression des données'' AS message;
 DELETE FROM ticket;
 DELETE FROM user;
 
-SELECT 'insertion donnée user' AS message;
-INSERT INTO user (id,username,password,roles) VALUES (1,"muriel.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
-INSERT INTO user (id,username,password,roles) VALUES (2,"maura.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
-INSERT INTO user (id,username,password,roles) VALUES (3,"emmanuel.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
-INSERT INTO user (id,username,password,roles) VALUES (4,"nes.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
-INSERT INTO user (id,username,password,roles) VALUES (5,"samuel.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
-INSERT INTO user (id,username,password,roles) VALUES (6,"guillaume.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
-INSERT INTO user (id,username,password,roles) VALUES (7,"marion.user","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_USER';}");
+SELECT ''insertion donnée user'' AS message;
+INSERT INTO user (id,username,password,roles) VALUES (1,"muriel.user","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:9:\"ROLE_USER\";}");
+INSERT INTO user (id,username,password,roles) VALUES (2,"maura.user","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:9:\"ROLE_USER\";}");
+INSERT INTO user (id,username,password,roles) VALUES (3,"emmanuel.user","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:9:\"ROLE_USER\";}");
+INSERT INTO user (id,username,password,roles) VALUES (4,"nes.user","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:9:\"ROLE_USER\";}");
+INSERT INTO user (id,username,password,roles) VALUES (5,"samuel.user","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:9:\"ROLE_USER\";}");
+INSERT INTO user (id,username,password,roles) VALUES (6,"guillaume.user","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:9:\"ROLE_USER\";}");
+INSERT INTO user (id,username,password,roles) VALUES (7,"marion.user","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:9:\"ROLE_USER\";}");
 
-INSERT INTO user (id,username,password,roles) VALUES (8,"muriel.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
-INSERT INTO user (id,username,password,roles) VALUES (9,"maura.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
-INSERT INTO user (id,username,password,roles) VALUES (10,"emmanuel.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
-INSERT INTO user (id,username,password,roles) VALUES (11,"nes.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
-INSERT INTO user (id,username,password,roles) VALUES (12,"samuel.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
-INSERT INTO user (id,username,password,roles) VALUES (13,"guillaume.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
-INSERT INTO user (id,username,password,roles) VALUES (14,"marion.admin","ad167fa654f27bb3707f76cf506508f6","a:1:{i:0;s:9:'ROLE_ADMIN';}");
+INSERT INTO user (id,username,password,roles) VALUES (8,"muriel.admin","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+INSERT INTO user (id,username,password,roles) VALUES (9,"maura.admin","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+INSERT INTO user (id,username,password,roles) VALUES (10,"emmanuel.admin","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+INSERT INTO user (id,username,password,roles) VALUES (11,"nes.admin","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+INSERT INTO user (id,username,password,roles) VALUES (12,"samuel.admin","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+INSERT INTO user (id,username,password,roles) VALUES (13,"guillaume.admin","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+INSERT INTO user (id,username,password,roles) VALUES (14,"marion.admin","$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs","a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 
-SELECT 'insertion donnée ticket' AS message;
+SELECT ''insertion donnée ticket'' AS message;
 INSERT INTO ticket (id,user_id,title,description,postcode,contact,status) VALUES (1,5,"Elmo","arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum","2286","Suspendisse@congueelit.ca",3);
 INSERT INTO ticket (id,user_id,title,description,postcode,contact,status) VALUES (2,2,"Plato","eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis non enim. Mauris quis","Z4605","in@utpharetra.co.uk",1);
 INSERT INTO ticket (id,user_id,title,description,postcode,contact,status) VALUES (3,4,"Cullen","Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus leo, in lobortis tellus justo sit amet nulla. Donec non justo. Proin non massa non ante bibendum ullamcorper. Duis cursus,","41804","venenatis.vel.faucibus@a.edu",1);
