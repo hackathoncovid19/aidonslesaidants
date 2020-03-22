@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Exception;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -98,8 +100,8 @@ class UserController
         return new Response($content);
     }
 
-
     /**
+     * @IsGranted("VIEW", subject="user")
      * @Route("/view/{id}", name="view", methods={"GET"})
      * @param User $user
      * @return string
@@ -113,7 +115,8 @@ class UserController
     }
 
     /**
-     * @Route("/new", name="edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
+     * @Route("/new", name="new", methods={"GET","POST"})
      * @throws Exception
      */
     public function create()
@@ -122,16 +125,18 @@ class UserController
     }
 
     /**
+     * @IsGranted("EDIT", subject="user")
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
+     * @param Request $user
      * @param User $user
      * @return Response|RedirectResponse
      * @throws Exception
      */
-    public function edit(User $user)
+    public function edit(Request $request, User $user)
     {
         $form = $this->formFactory->create(UserType::class, $user);
 
-        $form->handleRequest($user);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
 
@@ -146,6 +151,7 @@ class UserController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/delete/{id}", name="delete", methods={"DELETE"})
      * @param User $user
      */
@@ -155,6 +161,7 @@ class UserController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/list", name="list", methods={"GET"})
      * @throws Exception
      */
@@ -166,4 +173,5 @@ class UserController
             'users' => $users
         ]));
     }
+
 }
