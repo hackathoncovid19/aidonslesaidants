@@ -19,10 +19,10 @@ class TicketRepository extends ServiceEntityRepository
         parent::__construct($registry, Ticket::class);
     }
 
-    public function findAllOrderByStatus()
+    public function findAllOrderByDate()
     {
         $query = $this->createQueryBuilder('t')
-            ->orderBy('t.status')
+            ->orderBy('t.creationDate', 'ASC')
             ->getQuery();
 
         return $query->getResult();

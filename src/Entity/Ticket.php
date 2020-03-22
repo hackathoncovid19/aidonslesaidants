@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TicketRepository")
@@ -37,7 +38,7 @@ class Ticket
     private $contact;
 
      /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
     private $creationDate;
 
@@ -61,6 +62,11 @@ class Ticket
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->creationDate = new DateTime(); 
+    }
 
     public function getId(): ?int
     {
@@ -128,36 +134,36 @@ class Ticket
     }
 
 
-    public function geCreationDate(): ?User
+    public function getCreationDate(): ?DateTime
     {
         return $this->creationDate;
     }
 
-    public function setCreationDate(datetime $creationDate): self
+    public function setCreationDate(DateTime $creationDate): self
     {
         $this->creationDate = $creationDate;
 
         return $this;
     }
 
-    public function getAssignedDate(): ?User
+    public function getAssignedDate(): ?DateTime
     {
         return $this->assignedDate;
     }
 
-    public function setAssignedDate(?datetime $assignedDate): self
+    public function setAssignedDate(?DateTime $assignedDate): self
     {
         $this->assignedDate = $assignedDate;
 
         return $this;
     }
 
-    public function getResolvedDate(): ?User
+    public function getResolvedDate(): ?\DateTime
     {
         return $this->resolvedDate;
     }
 
-    public function setResolvedDate(?datetime $resolvedDate): self
+    public function setResolvedDate(?DateTime $resolvedDate): self
     {
         $this->resolvedDate = $resolvedDate;
 

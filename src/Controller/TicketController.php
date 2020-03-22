@@ -84,7 +84,10 @@ class TicketController
      */
     public function view(Ticket $ticket)
     {
-        $status = $this->statusCheckerService->getStatus($ticket->getAssignedDate(), $ticket->getResolvedDate());
+        $assignedDate = $ticket->getAssignedDate();
+        $resolvedDate = $ticket->getResolvedDate();
+
+        $status = $this->ticketService->getStatus($assignedDate, $resolvedDate);
         $ticket->setStatus($status);
 
         return new Response($this->twig->render('ticket/view.html.twig', [
@@ -131,7 +134,6 @@ class TicketController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ticket->setUser($this->security->getUser());
-            $ticket->setStatus(TicketStatusEnum::TICKET_STATUS_OPEN);
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
@@ -187,7 +189,7 @@ class TicketController
      */
     public function list()
     {
-        $tickets = $this->entityManager->getRepository(Ticket::class)->findAll();
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findAllOrderByDate();
 
         $status = TicketStatusEnum::TICKET_STATUS_DATA;            
 

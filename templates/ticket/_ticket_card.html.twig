@@ -1,9 +1,12 @@
 <div class="shadow p-3 mb-5 bg-{{ status[ticket.status].cssClass }} text-{{ status[ticket.status].cssClass }} rounded mr-3 ml-3">
     <a href="{{ path('ticket_view', {id: ticket.id}) }}" class="row ticket-link">
-        <div class="col-8">
-            <p class="my-auto">{{ ticket.title }}</p>
+        <div class="col-6">
+            <p class="my-auto">{{ ticket.title }}</p>          
         </div>
-        <div class="col-4 border-perso-{{ status[ticket.status].cssClass }}">
+        <div class="col-2-perso-{{ status[ticket.status].cssClass }}">
+            <p class="text-center my-auto-{{ status[ticket.status].cssClass }}">{{ ticket.creationDate|date("m/d/Y", "Europe/Paris")}}</p>
+        </div>
+        <div class="col-2 border-perso-{{ status[ticket.status].cssClass }}">
             <p class="text-center my-auto text-{{ status[ticket.status].cssClass }}">{{ status[ticket.status].name }}</p>
         </div>
     </a>
