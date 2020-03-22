@@ -81,7 +81,7 @@ class UserController
     }
 
     /**
-     * @Route("/connect", name="login", methods={"GET","POST"})
+     * @Route("/urltemporaire", name="login", methods={"GET","POST"})
      * @return Response
      * @throws Exception
      */
