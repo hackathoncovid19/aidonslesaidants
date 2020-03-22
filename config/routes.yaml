@@ -1,6 +1,3 @@
 user_login_check:
   path: /login_check
 
-user_new_create:
-  path: /new
-  controller: App\Controller\UserController::createAction

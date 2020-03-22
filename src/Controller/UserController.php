@@ -5,6 +5,7 @@ namespace App\Controller;
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Twig\Environment;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -15,6 +16,7 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 use App\Form\UserType;
 
@@ -27,8 +29,6 @@ class UserController
      * @var Environment
      */
     private $twig;
-
-
 
     /**
      * @var AuthorizationCheckerInterface
@@ -96,16 +96,60 @@ class UserController
      */
     public function view(User $user)
     {
-
+        return new Response(
+            $this->twig->render(
+                'user/view.html.twig',
+                [ 'user' => $user])
+        );
     }
 
     /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     * @throws Exception
+     * @IsGranted("ROLE_ADMIN")
+    *  @Route("/register", name="register", methods={"GET","POST"})
+     * @param   Request $request
+     * @return  Response|RedirectResponse
+     * @throws  Exception
      */
-    public function createAction()
+    public function register(Request $request): ?Response
     {
-        return new Response($this->twig->render('user/create.html.twig'));
+       $user = new User();
+       $form = $this->formFactory->createBuilder(UserType::class, $user)->getForm()->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+            $url = $this->router->generate('user_view', ['id' => $user->getId()]);
+
+           return new RedirectResponse($url, 302);
+       }
+
+       return new Response(
+           $this->twig->render(
+               'user/create.html.twig',
+               ['form' => $form->createView()]
+           )
+       );
+    }
+
+    /**
+     * @param $parameters
+     * @return bool
+     */
+    public function requiredFieldsNotFilled($parameters)
+    {
+        if (empty($parameters)) {
+            return true;
+        }
+        $fieldRequired = ['username', 'password'];
+
+        foreach ($fieldRequired as $field) {
+            if (!array_key_exists($field, $parameters) || $parameters[$field] === '') {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
