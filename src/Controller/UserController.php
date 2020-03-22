@@ -26,6 +26,21 @@ use App\Form\UserType;
 class UserController
 {
     /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    /**
      * @var Environment
      */
     private $twig;
