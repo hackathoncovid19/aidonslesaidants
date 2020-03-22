@@ -42,6 +42,11 @@ class Ticket
     private $contact;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $rgpdAccepted;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="tickets")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -97,6 +102,17 @@ class Ticket
     {
         $this->contact = $contact;
 
+        return $this;
+    }
+
+    public function getRgpdAccepted(): ?bool
+    {
+        return $this->rgpdAccepted;
+    }
+
+    public function setRgpdAccepted(?bool $rgpdAccepted)
+    {
+        $this->rgpdAccepted = $rgpdAccepted;
         return $this;
     }
 
