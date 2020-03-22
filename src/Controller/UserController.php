@@ -148,29 +148,9 @@ class UserController
     }
 
     /**
-     * @param $parameters
-     * @return bool
-     */
-    public function requiredFieldsNotFilled($parameters)
-    {
-        if (empty($parameters)) {
-            return true;
-        }
-        $fieldRequired = ['username', 'password'];
-
-        foreach ($fieldRequired as $field) {
-            if (!array_key_exists($field, $parameters) || $parameters[$field] === '') {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * @IsGranted("EDIT", subject="user")
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
-     * @param Request $user
+     * @param Request $request
      * @param User $user
      * @return Response|RedirectResponse
      * @throws Exception
