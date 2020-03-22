@@ -69,7 +69,7 @@ class TicketController
     }
 
     /**
-     * @Route("/{id}", name="view", methods={"GET"})
+     * @Route("/view/{id}", name="view", methods={"GET"})
      * @param Ticket $ticket
      * @return string
      * @throws Exception
@@ -82,7 +82,7 @@ class TicketController
     }
 
     /**
-     * @Route("/new", name="edit", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      * @throws Exception
      */
     public function create(Request $request)
@@ -98,9 +98,9 @@ class TicketController
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
-            $request->getSession()->getFlashBag()->add('success', 'Votre demande a bien été enregistrée !');
+            $request->getSession()->getFlashBag()->add('notice', 'Votre demande a bien été enregistrée !');
 
-            return new RedirectResponse($this->router->generate('view', ['id' => 1]));
+            return new RedirectResponse($this->router->generate('ticket_list'));
         }
 
         return new Response($this->twig->render('ticket/create.html.twig', [
@@ -110,19 +110,22 @@ class TicketController
 
     /**
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
+     * @param Request $request
      * @param Ticket $ticket
      * @return Response|RedirectResponse
      * @throws Exception
      */
-    public function edit(Ticket $ticket)
+    public function edit(Request $request, Ticket $ticket)
     {
         $form = $this->formFactory->create(TicketType::class, $ticket);
 
-        $form->handleRequest($ticket);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $ticket = $form->getData();
 
-            $url = $this->router->generate('ticket_view', [$ticket]);
+            $request->getSession()->getFlashBag()->add('notice', 'Votre modification a bien été enregistrée !');
+
+            $url = $this->router->generate('ticket_edit', ['id' => $ticket->getId()]);
             return new RedirectResponse($url, 302);
         }
 

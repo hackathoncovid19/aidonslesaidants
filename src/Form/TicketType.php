@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -42,20 +43,25 @@ class TicketType extends AbstractType
                     new NotBlank(['message' => 'Merci de saisir une description'])
                 ]
             ])
-            ->add('contact', NumberType::class, [
+            ->add('postcode', NumberType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Code postal (si la demande ne vaut que pour un lieu géographique donné)'
                 ],
                 'required' => false
             ])
-            ->add('postcode', TextType::class, [
+            ->add('contact', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Contact'
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Merci de saisir votre contact'])
+                ]
+            ])
+            ->add('valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-perso mx-auto rounded-0'
                 ]
             ]);
     }
