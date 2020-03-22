@@ -97,7 +97,7 @@ class AuthenticatorService extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        return new RedirectResponse($this->router->generate('home'));
+        return new RedirectResponse($this->router->generate('ticket_view_user_list'));
     }
 
     /**

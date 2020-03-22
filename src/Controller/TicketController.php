@@ -87,7 +87,6 @@ class TicketController
 
     /**
      * @Route("/list-by-user", name="view_user_list", methods={"GET"})
-     * @IsGranted("ROLE_USER")
      *
      * @return Response
      * @throws Exception
@@ -138,6 +137,7 @@ class TicketController
     }
 
     /**
+     * @IsGranted("EDIT", subject="ticket")
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
      * @param Request $request
      * @param Ticket $ticket
@@ -165,6 +165,7 @@ class TicketController
     }
 
     /**
+     * @IsGranted("DELETE")
      * @Route("/delete/{id}", name="delete", methods={"DELETE"})
      * @param Ticket $ticket
      */

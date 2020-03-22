@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use Exception;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
 class HomepageController
@@ -15,12 +16,19 @@ class HomepageController
     private $twig;
 
     /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    /**
      * HomepageController constructor.
      * @param Environment $twig
+     * @param RouterInterface $router
      */
-    public function __construct(Environment $twig)
+    public function __construct(Environment $twig, RouterInterface $router)
     {
         $this->twig = $twig;
+        $this->router = $router;
     }
 
     /**
@@ -29,6 +37,7 @@ class HomepageController
      */
     public function home()
     {
-        return new Response($this->twig->render('home/home.html.twig'));
+        $url = $this->router->generate('ticket_list');
+        return new RedirectResponse($url, 302);
     }
 }

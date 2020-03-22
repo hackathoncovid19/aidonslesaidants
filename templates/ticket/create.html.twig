@@ -34,7 +34,15 @@
                 {{ form_widget(form.contact) }}
                 {{ form_errors(form.contact) }}
             </div>
+
             <p>Attention, ce contact sera partagé à tout public.</p>
+
+            <div class="d-flex flex-row">
+                {{ form_widget(form.valider) }}
+
+                <a href="{{ path('ticket_view_user_list') }}" class=" ml-2 btn btn-danger">Annuler</a>
+            </div>
+
         {{ form_end(form) }}
     </div>
 {% endblock %}
