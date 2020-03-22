@@ -1,5 +1,31 @@
-{% include('base.html.twig') %}
+{% extends 'base.html.twig' %}
 
-{{ ticket.title }}
-<br />
-{{ ticket.description }}
+{% block title %}Aidons les aidants{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/ticket/view.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    <div class="container-sm">
+        <div id="headForm">
+            <h2 class="text-center text-uppercase pt-5">Détail de la demande {{ ticket.title }}</h2>
+        </div>
+        <div class="card mt-5">
+            <h5 class="card-header text-perso">{{ ticket.title }}</h5>
+            <div class="card-body">
+                <h5 class="card-title">{{ ticket.description }}</h5>
+
+                {% if ticket.postcode is defined %}
+                    <p class="card-text">{{ ticket.postcode }}</p>
+                {% endif %}
+
+                <p class="card-text">{{ ticket.contact }}</p>
+                <div class="d-flex flex-row-reverse">
+                    <a href="#" class="btn btn-perso">Retour à la liste des demandes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

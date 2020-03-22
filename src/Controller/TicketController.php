@@ -125,7 +125,7 @@ class TicketController
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
-            $request->getSession()->getFlashBag()->add('success', 'Votre demande a bien été enregistrée !');
+            $request->getSession()->getFlashBag()->add('notice', 'Votre demande a bien été enregistrée !');
 
             return new RedirectResponse($this->router->generate('ticket_view_user_list', ['id' => 1]));
         }
@@ -137,19 +137,22 @@ class TicketController
 
     /**
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
+     * @param Request $request
      * @param Ticket $ticket
      * @return Response|RedirectResponse
      * @throws Exception
      */
-    public function edit(Ticket $ticket)
+    public function edit(Request $request, Ticket $ticket)
     {
         $form = $this->formFactory->create(TicketType::class, $ticket);
 
-        $form->handleRequest($ticket);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $ticket = $form->getData();
 
-            $url = $this->router->generate('ticket_view', [$ticket]);
+            $request->getSession()->getFlashBag()->add('notice', 'Votre modification a bien été enregistrée !');
+
+            $url = $this->router->generate('ticket_edit', ['id' => $ticket->getId()]);
             return new RedirectResponse($url, 302);
         }
 
