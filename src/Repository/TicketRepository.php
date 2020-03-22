@@ -22,7 +22,7 @@ class TicketRepository extends ServiceEntityRepository
     public function findAllOrderByStatus()
     {
         $query = $this->createQueryBuilder('t')
-            ->orderBy('t.status', 'ASC')
+            ->orderBy('t.status')
             ->getQuery();
 
         return $query->getResult();

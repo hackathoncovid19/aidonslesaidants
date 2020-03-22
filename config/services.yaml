@@ -26,5 +26,5 @@ services:
     Laminas\Hydrator\ObjectPropertyHydrator:
         class: Laminas\Hydrator\ObjectPropertyHydrator
     
-    StatusCheckerService:
-        class:  App\StatusCheckerService
+    TicketService:
+        class:  App\TicketService

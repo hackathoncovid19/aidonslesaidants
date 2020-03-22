@@ -7,8 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Enum\TicketStatusEnum;
 
-class StatusCheckerService 
+class TicketService 
 {
    /**
    * Retourne le status suivant les dates données en parametre.
@@ -34,4 +35,33 @@ class StatusCheckerService
 
       return $statusState;
   }
+
+  /**
+     *
+     *
+     * PRIVATE
+     *
+     */
+
+    /**
+     * @param Ticket[] $tickets
+     * @return array
+     */
+    public function orderTickets(array $tickets): array
+    {
+        $return = [
+            'open'   => [],
+            'others' => []
+        ];
+
+        foreach ($tickets as $ticket) {
+            if ($ticket->getStatus() === TicketStatusEnum::TICKET_STATUS_OPEN) {
+                $return['open'][] = $ticket;
+            } else {
+                $return['others'][] = $ticket;
+            }
+        }
+
+        return $return;
+    }
 }

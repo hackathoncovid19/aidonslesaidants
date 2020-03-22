@@ -18,7 +18,7 @@ use App\Entity\Ticket;
 use App\Enum\TicketStatusEnum;
 use App\Form\TicketType;
 
-use App\Service\StatusCheckerService;
+use App\Service\TicketService;
 
 /**
  * @Route("/ticket", name="ticket_")
@@ -50,7 +50,7 @@ class TicketController
      */
     private $security;
 
-    private $statusCheckerService;
+    private $ticketService;
 
     /**
      * TicketController constructor.
@@ -65,7 +65,7 @@ class TicketController
         FormFactoryInterface $formFactory,
         RouterInterface $router,
         Security $security,
-        StatusCheckerService $StatusCheckerService 
+        TicketService $ticketService 
     )
     {
         $this->twig = $twig;
@@ -73,7 +73,7 @@ class TicketController
         $this->formFactory = $formFactory;
         $this->router = $router;
         $this->security = $security;
-        $this->statusCheckerService = $StatusCheckerService;
+        $this->ticketService = $ticketService;
     }
 
     /**
@@ -187,53 +187,23 @@ class TicketController
      */
     public function list()
     {
-        $tickets = $this->entityManager->getRepository(Ticket::class)->findAllOrderByStatus();
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findAll();
 
-        $tickets = $this->orderTickets($tickets);
-        $status = TicketStatusEnum::TICKET_STATUS_DATA;
-
-        foreach ($tickets as &$ticket) {
-            $status = $this->statusCheckerService->getStatus($ticket->getAssignedDate(), $ticket->getResolvedDate());
-            $ticket->setStatus($status);
-        }        
+        $status = TicketStatusEnum::TICKET_STATUS_DATA;            
 
         foreach ($tickets as &$ticket) {
-            $status = $this->statusCheckerService->getStatus($ticket->getAssignedDate(), $ticket->getResolvedDate());
-            $ticket->setStatus($status);
-        }        
+            $assignedDate = $ticket->getAssignedDate();
+            $resolvedDate = $ticket->getResolvedDate();
+
+            $statusInt = $this->ticketService->getStatus($assignedDate, $resolvedDate);
+            $ticket->setStatus($statusInt);
+        } 
+
+        $tickets = $this->ticketService->orderTickets($tickets);        
 
         return new Response($this->twig->render('ticket/list.html.twig', [
             'tickets' => $tickets,
             'status'  => $status,
         ]));
-    }
-
-    /**
-     *
-     *
-     * PRIVATE
-     *
-     */
-
-    /**
-     * @param Ticket[] $tickets
-     * @return array
-     */
-    private function orderTickets(array $tickets): array
-    {
-        $return = [
-            'open'   => [],
-            'others' => []
-        ];
-
-        foreach ($tickets as $ticket) {
-            if ($ticket->getStatus() === TicketStatusEnum::TICKET_STATUS_OPEN) {
-                $return['open'][] = $ticket;
-            } else {
-                $return['others'][] = $ticket;
-            }
-        }
-
-        return $return;
-    }
+    }    
 }
