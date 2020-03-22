@@ -14,6 +14,8 @@
 .DS_Store
 .idea
 .nbproject
+.history
+.vscode
 
 # MySQL local database
 .docker/mysql/data
