@@ -115,7 +115,6 @@ class UserController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="new", methods={"GET","POST"})
      * @throws Exception
      */
