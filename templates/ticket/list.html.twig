@@ -34,12 +34,9 @@
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
 
-        {% block help %}            
-                <p>Il n'y a pas d'autres besoins de professionnel.le.s du corps médical remontés pour le moment mais n'hésitez pas à revenir plus tard ou à proposer votre aide à d'autres personnes dans le besoin via nos partenaires
-					<a href="https://enpremiereligne.fr/">en première ligne</a> et <a href="https://covidaire.fr/">Covidaire, tous solidaires</a> !</p>
-            
-        {% endblock %}
-
+                <p>Il n'y a pas d'autres besoins de professionnel.le.s du corps médical remontés pour le moment mais n'hésitez pas à revenir plus tard ou à proposer votre aide à d'autres personnes dans le besoin via nos partenaires :
+<a href="https://covid19.reserve-civique.gouv.fr/missions">Réserve Civique</a>, <a href="https://enpremiereligne.fr/">en première ligne</a> et <a href="https://covidaire.fr/">Covidaire, tous solidaires</a> !</p>
+					
         {% for ticket in tickets.others %}
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
