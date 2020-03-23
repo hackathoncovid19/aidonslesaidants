@@ -21,6 +21,14 @@ label {
     height: 150px;
 }
 
+form  {
+    margin: 3rem;
+}
+
+section {
+    margin-top: 2rem;
+}
+
 .btn-perso {
     color: white;
     background-color: #00b894;
