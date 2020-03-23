@@ -7,15 +7,9 @@
 {% endblock %}
 
 {% block body %}
-    <div class="jumbotron">
-        <h4>
-            Chers aidants, chères aidantes,
-        </h4>
-
-        <h6>
-            /!\ Ce lien ne doit être partagé qu'à des proches de professionnel.le.s du corps médical que vous connaissez personnellement, on compte sur votre bouche à oreilles responsable /!\
-        </h6>
-    </div>
+    <p class="text-center pt-1 pb-1 mb-1 bg-secondary text-white">
+				/!\ Ce lien ne doit être partagé qu'à des proches de professionnel.le.s du corps médical que vous connaissez personnellement, on compte sur votre bouche à oreilles responsable /!\
+    </p>
 
     <div class="container-sm">
         <div id="headForm">
@@ -41,10 +35,10 @@
 
         <form action="{{ path('user_login_check') }}" method="post">
             <div class="form-group">
-                <input type="text" value="{{ last_username }}" name="username" id="username" class="form-control" placeholder="pseudonyme" required autofocus>
+                <input type="text" value="{{ last_username }}" name="username" id="username" class="form-control" placeholder="Pseudonyme" required autofocus>
             </div>
             <div class="form-group">
-                <input type="password" name="password" id="password" class="form-control" placeholder="mot de passe" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe" required>
             </div>
 
             <p>En cas d'oubli de vos identifiants, merci de contacter l'équipe technique.</p>
