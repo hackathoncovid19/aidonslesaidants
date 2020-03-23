@@ -145,9 +145,9 @@ class UserController
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
-            $url = $this->router->generate('user_view', ['id' => $user->getId()]);
-
-           return new RedirectResponse($url, 302);
+            
+            $url = $this->router->generate('user_login');
+            return new RedirectResponse($url, 302);
        }
 
        return new Response(

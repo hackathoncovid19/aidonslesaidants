@@ -35,7 +35,7 @@ security:
 
     access_control:
         #todo force to https
-        - { path: ^/ticket/(view|list), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/ticket/(view|list)$, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
         - { path: ^/ticket, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
         - { path: ^/user/(enregistrement-urltemporaire|urltemporaire), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
         - { path: ^/user, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
