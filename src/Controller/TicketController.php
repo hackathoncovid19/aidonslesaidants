@@ -92,7 +92,7 @@ class TicketController
     public function viewAllByUser()
     {
         $user = $this->security->getUser();
-        $tickets = $this->entityManager->getRepository(Ticket::class)->findByUser($user, ['status' => 'ASC']);
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findByUser($user, ['status' => 'ASC', 'creationDate' => 'ASC']);
 
         $tickets = $this->orderTickets($tickets);
         $status = TicketStatusEnum::TICKET_STATUS_DATA;
@@ -179,7 +179,7 @@ class TicketController
      */
     public function list()
     {
-        $tickets = $this->entityManager->getRepository(Ticket::class)->findAllOrderByStatus();
+        $tickets = $this->entityManager->getRepository(Ticket::class)->findAllOrderByStatusAndCreationDate();
 
         $tickets = $this->orderTickets($tickets);
         $status = TicketStatusEnum::TICKET_STATUS_DATA;

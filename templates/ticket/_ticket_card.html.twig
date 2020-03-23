@@ -1,10 +1,13 @@
-<div class="shadow p-3 mb-5 bg-{{ status[ticket.status].cssClass }} text-{{ status[ticket.status].cssClass }} rounded mr-3 ml-3">
-    <a href="{{ path('ticket_view', {id: ticket.id}) }}" class="row ticket-link">
-        <div class="col-8">
-            <p class="my-auto">{{ ticket.title }}</p>
+{% if status[ticket.status] is defined %}
+    <div class="card shadow rounded border-0 mx-3 mb-3 bg-{{ status[ticket.status].cssClass }} text-{{ status[ticket.status].cssClass }}">
+        <div class="card-body">
+            <a href="{{ path('ticket_view', {id: ticket.id}) }}" class="d-flex justify-content-between align-items-center">
+                <p class="mb-0"><strong>{{ ticket.title }}</strong></p>
+                <div class="d-flex">
+                    <p class="mb-0 pr-3 text-{{ status[ticket.status].cssClass }}"><strong>{{ ticket.creationDate|date("m/d/Y", "Europe/Paris")}}</strong></p>
+                    <p class="mb-0 pl-3 border-perso-{{ status[ticket.status].cssClass }} text-{{ status[ticket.status].cssClass }}"><strong>{{ status[ticket.status].name }}</strong></p>
+                </div>
+            </a>
         </div>
-        <div class="col-4 border-perso-{{ status[ticket.status].cssClass }}">
-            <p class="text-center my-auto text-{{ status[ticket.status].cssClass }}">{{ status[ticket.status].name }}</p>
-        </div>
-    </a>
-</div>
+    </div>
+{% endif %}
