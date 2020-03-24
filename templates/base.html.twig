@@ -14,7 +14,7 @@
         {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
             <a class="navbar-brand" href="#">
                 <img height="60" src="{{ asset('img/logo.png') }}"/>
             </a>
@@ -29,9 +29,16 @@
                     </li>
                 </ul>
             </div>
-        </nav>
-
-        {% block body %}{% endblock %}
+        </nav> -->
+        {% block alert %}{% endblock %}
+        <div class="container-sm">
+            <div id="headForm">
+              <img id="logo" class="float-left" src="{{ asset('img/logo.png') }}"/>
+      				<h2 class="text-uppercase text-center float-right titre">{% block headForm %}ALAID{% endblock %}</h2>
+            </div>
+            {% block body %}
+            {% endblock %}
+        </div>
         {% block javascripts %}
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
