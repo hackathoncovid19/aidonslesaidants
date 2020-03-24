@@ -2,12 +2,18 @@
 
 namespace App\Form;
 
+use App\Entity\Ticket;
+use App\Enum\TicketStatusEnum;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -54,18 +60,65 @@ class TicketType extends AbstractType
                     new NotBlank(['message' => 'Merci de saisir votre contact'])
                 ]
             ])
-            ->add('rgpdAccepted', CheckboxType::class, [
+            ->add('valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-perso mx-auto rounded-0'
+                ]
+            ]);
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, [$this, 'onPreSetData']);
+    }
+
+    /**
+     * @param FormEvent $event
+     */
+    public function onPreSetData(FormEvent $event)
+    {
+        /** @var $ticket $ticket */
+        $ticket = $event->getData();
+        $form = $event->getForm();
+        if (!$ticket || null !== $ticket->getId()) {
+            $form
+                ->add('status', ChoiceType::class, [
+                    'choices' => $this->getStatusChoices(),
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => 'Statut',
+                    ],
+                    'required' => true,
+                ]);
+        } else {
+            $form->add('rgpdAccepted', CheckboxType::class, [
                 'label' => 'J\'accepte que mes données personnelles soient utilisées pour être contacté par des bénévoles tout en sachant que je pourrais modifier ou supprimer ces coordonnées en modifiant ma demande.',
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez accepter l\'utilisation de vos données personnelles.'
                     ])
                 ]
-            ])
-            ->add('valider', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-perso mx-auto rounded-0'
-                ]
             ]);
+        }
+    }
+
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Ticket::class
+        ]);
+    }
+
+    /**
+     * @return array
+     */
+    private function getStatusChoices(): array
+    {
+        $statuses = TicketStatusEnum::TICKET_STATUS_DATA;
+        $data = [];
+        foreach ($statuses as $statusKey => $status) {
+            $data[$status['name']] = $statusKey;
+        }
+        return $data;
     }
 }
