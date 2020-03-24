@@ -1,1 +1,5 @@
 "Username could not be found.": "Pseudonyme ou mot de passe inconnu."
+
+error:
+  invalid_credentials:
+    "Mauvais identifiant ou mot de passe"
