@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
-use Exception;
+use Twig\Environment;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
-use Twig\Environment;
 
-class HomepageController
+/**
+ * @Route("/legal", name="legal_")
+ */
+class LegalController
 {
     /**
      * @var Environment
@@ -21,24 +24,26 @@ class HomepageController
     private $router;
 
     /**
-     * HomepageController constructor.
+     * LegalController constructor.
      * @param Environment $twig
      * @param RouterInterface $router
      */
-    public function __construct(Environment $twig, RouterInterface $router)
+    public function __construct(
+        Environment $twig,
+        RouterInterface $router
+    )
     {
         $this->twig = $twig;
         $this->router = $router;
     }
 
     /**
-     * @Route("/", name="home", methods={"GET","POST"})
+     * @Route("/data-protection", name="dataProtection", methods={"GET"})
+     * @return string
      * @throws Exception
      */
-    public function home()
+    public function dataProtection()
     {
-        $url = $this->router->generate('ticket_list');
-        return new RedirectResponse($url, 302);
+        return new Response($this->twig->render('legal/data_protection.html.twig'));
     }
-
 }

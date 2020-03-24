@@ -6,27 +6,18 @@
     <link href="{{ asset('css/ticket/list.css') }}" rel="stylesheet"/>
 {% endblock %}
 
-{% block body %}
 
-    <div class="container-sm">
-        <div id="headForm">
-            <h2 class="text-center text-uppercase pt-5">Protection des données</h2>
-        </div>
+{% block headForm %}Protection des données{% endblock %}
+{% block body %}
         {% block preface %}
             <div class="mt-5 mb-2">
-                <p>
-                    ALAID a pour vocation d'aider les professionnel.le.s du corps médical investi.e.s
-                    dans la mobilisation nationale pour lutter contre le COVID-19.
-                    Conscient de leur charge de travail, cette application ne s'adresse pas à
-                    eux directement, mais à leurs proches car ces proches connaissent eux aussi
-                    le quotidien difficile des soignant.e.s et disposent surement de plus de temps pour
-                    faire le lien avec des bénévoles citoyens pour répondre à leurs besoins.
-                </p>
-                <p>
-                    En tant que potentiel bénévole, restez à l'affut des besoins du corps médical via cette page.
-                    Si vous pensez pouvoir répondre à une demande, contactez le proche via le champ prévu à cet effet
-                    dans le détail de la demande. Sinon, merci de partager ce lien à votre entourage !
-                </p>
+                <p>Le Responsable de Traitement de aidonslesaidants.fr est Rémi Koci (alaid.tech@gmail.com).</p>
+                <p>En accord avec le Règlement Général sur la Protection des Données, aidonslesaidants.fr collecte des données uniquement à des fins de mise en relation de personnes à visée d'entraide.</p>
+                <p>Les données collectées par aidonslesaidants.fr sont uniquement celles renseignées par les utilisateurs du site internet aidonslesaidants.fr. Aucune autre donnée personnelle n'est collectée, notamment grâce à l'utilisation d'une technologie anonyme et sans cookie de mesure d'usage.</p>
+                <p>Les données collectées dans le cadre du traitement de mise en relation de personnes à des visées d'entraide sont utilisées uniquement pour cet objectif. Elles sont supprimées automatiquement 30 jours après le passage d'une demande en "terminé", ou sur simple demande à alaid.tech@gmail.com.</p>
+                <p>Les données collectées correspondent à des données à caractère personnel mais ne sont pas des données particulières dites à caractère sensible de par la nature de la collecte (anonymisation des informations partout où cela est possible, utilisation d'intervalles d'âges, mise en relation simple par e-mail, ...).</p>
+                <br>
+                <p>Vous disposez d'un droit d'accès, de rectification, d’effacement et de portabilité de vos données ainsi que d’un droit d'opposition et d'un droit de limitation du traitement des données vous concernant. Vous pouvez exercer vos droits en nous contactant à l'adresse suivante : <a href="mailto:alaid.tech@gmail.com">alaid.tech@gmail.com</a></p>
             </div>
         {% endblock %}
 

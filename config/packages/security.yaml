@@ -39,5 +39,5 @@ security:
         - { path: ^/ticket, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
         - { path: ^/user/(enregistrement-urltemporaire|urltemporaire), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
         - { path: ^/user, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
-        - { path: ^/dataProtection, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/legal/data-protection, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
