@@ -15,7 +15,7 @@
         <div class="card mt-5">
             <h5 class="card-header text-perso">{{ ticket.title }}</h5>
             <div class="card-body">
-                <h5 class="card-title">{{ ticket.description }}</h5>
+                <p class="card-text">{{ ticket.description }}</p>
 
                 <hr />
                 <h5 class="font-weight-bold">Informations complémentaires</h5>
@@ -25,19 +25,19 @@
                         {{ include('svg/_contact.svg.twig') }}
                     </div>
         
-                    <div class="col-md-8">
+                    <div class="col-md-8" pl-5>
                         {% if ticket.postcode is defined %}
-                            <div class="card-text">
-                                Code postal: <span class="font-weight-bold">{{ ticket.postcode }}</span>
-                            </div>
+                            <p class="card-text">Code postal: <span class="font-weight-bold">{{ ticket.postcode }}</span></p>
                         {% endif %}
-                        <p class="card-text">Contact: {{ ticket.contact }}</p>
+
+                        <p class="card-text">Contact: <span style="color:#00b894">{{ ticket.contact }}</span></p>
                         <p class="card-text">Créée le : {{ ticket.creationDate|date("d/m/Y", "Europe/Paris") }}</p>
-                        <div class="d-flex flex-row">
+                        <div class="d-flex flex-row mt-5">
                             {% if is_granted('ROLE_USER') == true %}
-                                <a href="{{ path('ticket_view_user_list') }}" class="btn btn-perso mr-2">Retour à mes tickets</a>
+                                <a href="{{ path('ticket_view_user_list') }}" class="btn btn-perso mr-2">Retour à ma liste de demandes</a>
+                            {% else %}
+                                <a href="{{ path('ticket_list') }}" class="btn btn-perso">Retour à la liste des demandes</a>
                             {% endif %}
-                            <a href="{{ path('ticket_list') }}" class="btn btn-perso">Retour à la liste des demandes</a>
                         </div>
                     </div>
                 </div>

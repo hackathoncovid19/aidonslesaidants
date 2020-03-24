@@ -42,15 +42,18 @@ class User implements UserInterface
 
     public function __construct()
     {
+        $this->username = '';
+        $this->password = '';
         $this->tickets = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getUsername(): ?string
+
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -62,7 +65,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
         return $this->password;
     }

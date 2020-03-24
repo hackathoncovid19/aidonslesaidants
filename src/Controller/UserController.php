@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use Exception;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 use App\Entity\User;
 use App\Form\UserType;
@@ -23,11 +24,6 @@ use App\Form\UserType;
  */
 class UserController
 {
-    /**
-     * @var Environment
-     */
-    private $twig;
-
     /**
      * @var EntityManagerInterface
      */
@@ -44,6 +40,11 @@ class UserController
     private $router;
 
     /**
+     * @var Environment
+     */
+    private $twig;
+
+    /**
      * @var AuthorizationCheckerInterface
      */
     private $authenticationChecker;
@@ -55,6 +56,11 @@ class UserController
     private $authenticationUtils;
 
     /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $passwordEncoder;
+
+    /**
      * UserController constructor.
      * @param Environment $twig
      * @param EntityManagerInterface $entityManager
@@ -62,6 +68,7 @@ class UserController
      * @param RouterInterface $router ,
      * @param AuthorizationCheckerInterface $authenticationChecker
      * @param AuthenticationUtils $authenticationUtils
+     * @param UserPasswordEncoderInterface $passwordEncoder
      */
     public function __construct(
         Environment $twig,
@@ -69,7 +76,8 @@ class UserController
         FormFactoryInterface $formFactory,
         RouterInterface $router,
         AuthorizationCheckerInterface $authenticationChecker,
-        AuthenticationUtils $authenticationUtils
+        AuthenticationUtils $authenticationUtils,
+        UserPasswordEncoderInterface $passwordEncoder
     )
     {
         $this->twig = $twig;
@@ -78,6 +86,7 @@ class UserController
         $this->router = $router;
         $this->authenticationChecker = $authenticationChecker;
         $this->authenticationUtils = $authenticationUtils;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     /**
@@ -87,9 +96,10 @@ class UserController
      */
     public function login() : Response
     {
-        /*if ($this->authenticationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return new RedirectResponse('/', 302);
-        }*/
+        if ($this->authenticationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $url = $this->router->generate('ticket_view_user_list');
+            return new RedirectResponse($url, 302);
+        }
 
         $content = $this->twig->render('user/login.html.twig', array(
             'last_username' => $this->authenticationUtils->getLastUsername(),
@@ -109,24 +119,49 @@ class UserController
      */
     public function view(User $user)
     {
-        return new Response($this->twig->render('user/view.html.twig', [
-            'user' => $user
-        ]));
+        return new Response(
+            $this->twig->render(
+                'user/view.html.twig',
+                [ 'user' => $user])
+        );
     }
 
     /**
-     * @Route("/new", name="new", methods={"GET","POST"})
-     * @throws Exception
+     *  @Route("/enregistrement-urltemporaire", name="register", methods={"GET","POST"})
+     * @param   Request $request
+     * @return  Response|RedirectResponse
+     * @throws  Exception
      */
-    public function create()
+    public function register(Request $request): ?Response
     {
-        return new Response($this->twig->render('user/create.html.twig'));
+        /** @var User $user */
+        $user = new User();
+        $form = $this->formFactory->createBuilder(UserType::class, $user)->getForm()->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            $user->setRoles(['ROLE_USER']);
+            $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPassword()));
+
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+            
+            $url = $this->router->generate('user_login');
+            return new RedirectResponse($url, 302);
+       }
+
+       return new Response(
+           $this->twig->render(
+               'user/create.html.twig',
+               ['form' => $form->createView()]
+           )
+       );
     }
 
     /**
      * @IsGranted("EDIT", subject="user")
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
-     * @param Request $user
+     * @param Request $request
      * @param User $user
      * @return Response|RedirectResponse
      * @throws Exception
