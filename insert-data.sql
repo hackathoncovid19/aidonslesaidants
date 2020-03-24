@@ -15,74 +15,61 @@ DELETE FROM user;
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (1, "muriel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (1, "muriel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (2, "maura.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (2, "maura.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (3, "emmanuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (3, "emmanuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (4, "nes.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (4, "nes.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (5, "samuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (5, "samuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (6, "guillaume.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (6, "guillaume.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (7, "marion.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (7, "marion.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (8, "muriel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (8, "muriel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (9, "maura.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (9, "maura.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (10, "emmanuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (10, "emmanuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (11, "nes.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (11, "nes.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (12, "samuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (12, "samuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (13, "guillaume.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (13, "guillaume.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (14, "marion.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (14, "marion.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+
 
 
 INSERT INTO ticket
