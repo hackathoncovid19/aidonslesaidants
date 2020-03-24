@@ -22,6 +22,21 @@ class Ticket
     private $status;
 
     /**
+     * @ORM\Column(type="datetime", options={"default"="CURRENT_TIMESTAMP"})
+     */
+    private $creationDate;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $assignedDate;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $resolvedDate;
+
+    /**
      * @ORM\Column(type="string", length=150)
      */
     private $title;
@@ -51,6 +66,11 @@ class Ticket
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -128,15 +148,48 @@ class Ticket
         return $this;
     }
 
-    public function getStatus(): int
+    public function getStatus(): ?int
     {
         return $this->status;
     }
 
-    public function setStatus(int $status): self
+    public function setStatus(?int $status): self
     {
         $this->status = $status;
 
+        return $this;
+    }
+
+    public function getCreationDate(): \DateTime
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate(\DateTime $creationDate): self
+    {
+        $this->creationDate = $creationDate;
+        return $this;
+    }
+
+    public function getAssignedDate(): ?\DateTime
+    {
+        return $this->assignedDate;
+    }
+
+    public function setAssignedDate(?\DateTime $assignedDate): self
+    {
+        $this->assignedDate = $assignedDate;
+        return $this;
+    }
+
+    public function getResolvedDate(): ?\DateTime
+    {
+        return $this->resolvedDate;
+    }
+
+    public function setResolvedDate(?\DateTime $resolvedDate): self
+    {
+        $this->resolvedDate = $resolvedDate;
         return $this;
     }
 }

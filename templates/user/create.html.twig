@@ -11,6 +11,12 @@
         {{ form_start(form)}}
         <div class="m-5">
         <div class="form-group">
+            {{ form_label(form.username, 'Identifiant') }}
+            {% if form_errors(form.username) %}
+                <ul>
+                    <li>Cet identifiant est déjà utilisé</li>
+                </ul>
+            {% endif %}
             {{ form_widget(form.username)}}
         </div>
         <div class="form-group">

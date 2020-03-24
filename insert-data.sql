@@ -15,90 +15,87 @@ DELETE FROM user;
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (1, "muriel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (1, "muriel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (2, "maura.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (2, "maura.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (3, "emmanuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (3, "emmanuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (4, "nes.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (4, "nes.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (5, "samuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (5, "samuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (6, "guillaume.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (6, "guillaume.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (7, "marion.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"
-ROLE_USER\";}");
+  (7, "marion.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (8, "muriel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (8, "muriel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (9, "maura.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (9, "maura.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (10, "emmanuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (10, "emmanuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (11, "nes.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (11, "nes.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (12, "samuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (12, "samuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (13, "guillaume.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (13, "guillaume.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (14, "marion.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"
-ROLE_ADMIN\";}");
+  (14, "marion.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+
 
 
 INSERT INTO ticket
-  (id,user_id,title,description,postcode,creation_date,assigned_Date,resolved_Date,contact)
+  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
 VALUES
-  (1, 5, "Demande de prêt de vélo pour se rendre à l'hôpital", "Besoin d'un vélo pour ma femme chirurgienne pour qu'elle puisse se rendre à l'hôpital tous les matins à 9h. Merci d'avance de nous contacter à antoine.theret@gmail.com. Nous nous organiserons pour mettre le vélo à disposition en respectant les règles barrières d'hygiène. ", "75017", "2020-03-21 15:49:14 ", NULL, NULL, "antoine.theret@gmail.com");
+  (1, 5, "Demande de prêt de vélo pour se rendre à l'hôpital", "Besoin d'un vélo pour ma femme chirurgienne pour qu'elle puisse se rendre à l'hôpital tous les matins à 9h. Merci d'avance de nous contact,status,rgpdAccepteder à antoine.theret@gmail.com. Nous nous organiserons pour mettre le vélo à disposition en respectant les règles barrières d'hygiène. ", "75017", "antoine.theret@gmail.com",1,TRUE);
 INSERT INTO ticket
-  (id,user_id,title,description,postcode,creation_date,assigned_Date,resolved_Date,contact)
+  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
 VALUES
-  (2, 2, "Demande d'aide pour amener un chat chez le vétérinaire", "Mon mari est infirmier et m'a fait remonter la demande d'un de ces collègues pour amener son chat chez le vétérinaire, je ne peux pas me déplacer car je dois garder les enfants mais je m'occupe de faire le lien avec le collègues de mon mari. ", "78360", "2020-03-22 15:49:14 ", NULL, NULL, "alexi.michelin@gmail.com");
+  (2, 2, "Demande d'aide pour amener un chat chez le vétérinaire", "Mon mari est infirmier et m'a fait remonter la demande d'un de ces collègues pour amener son chat chez le vétérinaire, je ne peux pas me déplacer car je dois garder les enfants mais je m'occupe de faire le lien avec le collègues de mon mari. ", "78360", "alexi.michelin@gmail.com",1,TRUE);
 INSERT INTO ticket
-  (id,user_id,title,description,postcode,creation_date,assigned_Date,resolved_Date,contact)
+  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
 VALUES
   (3, 4, "Demande d'aide pour amener un chien chez le vétérinaire", "Mon mari est infirmier et m'a fait remonter la demande d'un de ces collègues pour amener son chat chez le vétérinaire, je ne peux pas me déplacer car je dois garder les enfants mais je m'occupe de faire le lien avec le collègues de mon mari. ",
-    "78360", "2020-03-18 15:49:14 ", "2020-03-19 15:49:14 ", "2020-03-21 15:49:14 ", "alexi.michelin@gmail.com");
+    "78360", "alexi.michelin@gmail.com",2,TRUE);
 INSERT INTO ticket
-  (id,user_id,title,description,postcode,creation_date,assigned_Date,resolved_Date,contact)
+  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
 VALUES
-  (4, 2, "Besoin d'une application pour gérer les temps d'attente dans les urgences", "Merci de me contacter pour plus d'info", "", "2020-03-18 15:49:14 ", "2020-03-19 15:49:14 ", NULL, "0667089997");
+  (4, 2, "Besoin d'une application pour gérer les temps d'attente dans les urgences", "Merci de me contact,status,rgpdAccepteder pour plus d'info", "", "0667089997",3,TRUE);
+INSERT INTO ticket
+  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
+VALUES
+  (5, 4, "Besoin d'une application en ligne pour partager des images d'échographie de patients", "Ma soeur travail en bloc et m'a fait remonter un besoin de partage d'images entre collègues. Pourriez-vous me contacter si vous êtes en capacité de développer informatiquement ce genre de chose ? Merci pour eux, je me tiens à votre disposition!",
+  "78360", "valentine.cuvelier@gmail.com ou 0707098989",2,TRUE);
+INSERT INTO ticket
+  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
+VALUES
+  (6, 4, "Besoin d'une webcam pour téléconsultation", "Ma femme est médecin généraliste et nous ne sommes plus capable de faire de commandes en ligne pour une webcam. Quelqu'un pourrait nous en envoyer une svp ? Merci d'avance. ",
+    "78360", "delphine.jeantet@gmail.com",1,TRUE);

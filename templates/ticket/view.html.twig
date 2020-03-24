@@ -26,7 +26,9 @@
                         {% if ticket.postcode is defined %}
                             <p class="card-text">Code postal: <span class="font-weight-bold">{{ ticket.postcode }}</span></p>
                         {% endif %}
-                        <p class="card-text pb-4">Contact: <span style="color:#00b894">{{ ticket.contact }}</span></p>
+
+                        <p class="card-text">Contact: <span style="color:#00b894">{{ ticket.contact }}</span></p>
+                        <p class="card-text">Créée le : {{ ticket.creationDate|date("d/m/Y", "Europe/Paris") }}</p>
                         <div class="d-flex flex-row mt-5">
                             {% if is_granted('ROLE_USER') == true %}
                                 <a href="{{ path('ticket_view_user_list') }}" class="btn btn-perso mr-2">Retour à ma liste de demandes</a>
