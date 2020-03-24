@@ -57,6 +57,16 @@ class LegalController
     }
 
     /**
+     * @Route("/cgu", name="cgu", methods={"GET"})
+     * @return string
+     * @throws Exception
+     */
+    public function cgu()
+    {
+        return new Response($this->twig->render('legal/cgu.html.twig'));
+    }
+
+    /**
      * @Route("/back", name="back", methods={"GET","POST"})
      * @return Response
      * @throws Exception

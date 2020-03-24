@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aidons les aidants{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/ticket/list.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block headForm %}conditions d'utilisation{% endblock %}
+{% block body %}
+        {% block preface %}
+            <div class="mt-5 mb-2">
+                <p>En attente de rédaction par Sébastien Morel :)</p>
+            </div>
+        {% endblock %}
+        <div class="d-flex flex-row-reverse mt-5">
+              <a href="{{ path('legal_back') }}" class="btn btn-perso">Retour</a>
+        </div>
+{% endblock %}
