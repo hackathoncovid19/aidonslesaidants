@@ -47,3 +47,7 @@ label,
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
+#inappropriate-alert {
+    font-size: .6rem;
+}
