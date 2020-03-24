@@ -26,7 +26,7 @@ class UserType extends AbstractType
                     'constraints'=> [new NotBlank(), new NotNull()],
                     'attr' => [
                         'class' => 'form-control',
-                        'placeholder' => 'Pseudonyme'
+                        'placeholder' => ''
                     ],
                     'required' => true,
                 ]
@@ -39,16 +39,17 @@ class UserType extends AbstractType
                     'invalid_message' => 'The password fields must match',
                     'required' => true,
                     'first_options' => [
-                        'label' => '',
+                        'label' => 'Mot de passe',
                         'attr' => [
                             'class' => 'form-control',
-                            'placeholder' => 'Mot de passe'
+                            'placeholder' => ''
                         ]
                     ],
                     'second_options' => [
+                        'label' => 'Confirmation du mot de passe',
                         'attr' => [
                             'class' => 'form-control',
-                            'placeholder' => 'Confirmation du mot de passe'
+                            'placeholder' => ''
                         ]
                     ]
                 ]
