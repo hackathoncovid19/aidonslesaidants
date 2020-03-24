@@ -7,11 +7,8 @@
     <link href="{{ asset('css/ticket/view.css') }}" rel="stylesheet"/>
 {% endblock %}
 
+{% block headForm %}detail de la demande{% endblock %}
 {% block body %}
-    <div class="container-sm">
-        <div id="headForm">
-            <h2 class="text-center text-uppercase pt-5">Détail de la demande {{ ticket.title }}</h2>
-        </div>
         <div class="card mt-5">
             <h5 class="card-header text-perso">{{ ticket.title }}</h5>
             <div class="card-body">
@@ -24,7 +21,7 @@
                     <div class="col-md-4">
                         {{ include('svg/_contact.svg.twig') }}
                     </div>
-        
+
                     <div class="col-md-8" pl-5>
                         {% if ticket.postcode is defined %}
                             <p class="card-text">Code postal: <span class="font-weight-bold">{{ ticket.postcode }}</span></p>
@@ -43,5 +40,4 @@
                 </div>
             </div>
         </div>
-    </div>
 {% endblock %}

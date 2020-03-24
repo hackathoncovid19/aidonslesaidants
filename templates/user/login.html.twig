@@ -6,15 +6,13 @@
     <link href="{{ asset('css/user/login.css') }}" rel="stylesheet"/>
 {% endblock %}
 
+{% block alert %}
+<p class="text-center pt-1 pb-1 mb-1 bg-secondary text-white">
+    /!\ Ce lien ne doit être partagé qu'à des proches de professionnel.le.s du corps médical que vous connaissez personnellement, on compte sur votre bouche à oreilles responsable /!\
+</p>
+{% endblock %}
+{% block headForm %}liste des demandes{% endblock %}
 {% block body %}
-    <p class="text-center pt-1 pb-1 mb-1 bg-secondary text-white">
-				/!\ Ce lien ne doit être partagé qu'à des proches de professionnel.le.s du corps médical que vous connaissez personnellement, on compte sur votre bouche à oreilles responsable /!\
-    </p>
-
-    <div class="container-sm">
-        <div id="headForm">
-            <h2 class="text-center text-uppercase pt-5">SE CONNECTER</h2>
-        </div>
 
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -50,5 +48,4 @@
 
             <input type="hidden" name="csrf_token"value="{{ csrf_token('authenticate') }}">
         </form>
-    </div>
 {% endblock %}

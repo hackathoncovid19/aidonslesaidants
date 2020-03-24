@@ -6,11 +6,8 @@
     <link href="{{ asset('css/ticket/create.css') }}" rel="stylesheet"/>
 {% endblock %}
 
+{% block headForm %}Edition{% endblock %}
 {% block body %}
-    <div class="container-sm">
-        <div id="headForm">
-            <h2 class="text-center text-uppercase pt-5">Modifier une demande</h2>
-        </div>
 
         {% for message in app.flashes('notice') %}
             <div class="alert alert-info">{{ message }}</div>
@@ -35,5 +32,4 @@
             <p>Attention, ce contact sera partagé à tout public.</p>
             {{ form_widget(form.valider) }}
         {{ form_end(form) }}
-    </div>
 {% endblock %}

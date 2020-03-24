@@ -4,7 +4,7 @@
     {% for message in app.flashes('notice') %}
         <div class="alert alert-info">{{ message }}</div>
     {% endfor %}
-    
+
     <div class="d-flex flex-row-reverse mr-3">
         <a href="{{ path('ticket_create') }}" class="btn btn-perso mt-4 mb-4">Créer une demande
             <strong>

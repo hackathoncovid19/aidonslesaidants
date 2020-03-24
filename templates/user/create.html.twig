@@ -6,11 +6,8 @@
     <link href="{{ asset('css/user/create.css') }}" rel="stylesheet"/>
 {% endblock %}
 
+{% block headForm %}inscription{% endblock %}
 {% block body %}
-    <div class="container-sm">
-        <div id="headForm">
-            <h2 class="text-center text-uppercase pt-5">inscription</h2>
-        </div>
         {{ form_start(form)}}
         <div class="m-5">
         <div class="form-group">
@@ -32,5 +29,4 @@
         </div>
         </div>
         {{ form_end(form) }}
-    </div>
  {% endblock %}

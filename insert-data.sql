@@ -75,7 +75,7 @@ VALUES
 INSERT INTO ticket
   (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
 VALUES
-  (1, 5, "Demande de prêt de vélo pour se rendre à l'hôpital", "Besoin d'un vélo pour ma femme chirurgienne pour qu'elle puisse se rendre à l'hôpital tous les matins à 9h. Merci d'avance de nous contact,status,rgpdAccepteder à antoine.theret@gmail.com. Nous nous organiserons pour mettre le vélo à disposition en respectant les règles barrières d'hygiène. ", "75017", "antoine.theret@gmail.com",1,TRUE);
+  (1, 5, "Demande de prêt de vélo pour se rendre à l'hôpital", "Besoin d'un vélo pour ma femme chirurgienne pour qu'elle puisse se rendre à l'hôpital tous les matins à 9h. Merci d'avance de nous contacter à antoine.theret@gmail.com. Nous nous organiserons pour mettre le vélo à disposition en respectant les règles barrières d'hygiène. ", "75017", "antoine.theret@gmail.com",1,TRUE);
 INSERT INTO ticket
   (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
 VALUES
@@ -88,7 +88,7 @@ VALUES
 INSERT INTO ticket
   (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
 VALUES
-  (4, 2, "Besoin d'une application pour gérer les temps d'attente dans les urgences", "Merci de me contact,status,rgpdAccepteder pour plus d'info", "", "0667089997",3,TRUE);
+  (4, 2, "Besoin d'une application pour gérer les temps d'attente dans les urgences", "Merci de me contacter pour plus d'info", "", "0667089997",3,TRUE);
 INSERT INTO ticket
   (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
 VALUES
