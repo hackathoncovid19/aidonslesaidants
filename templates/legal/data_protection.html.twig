@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Protection des données{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/ticket/list.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-sm">
+        <div id="headForm">
+            <h2 class="text-center text-uppercase pt-5">Protection des données</h2>
+        </div>
+        {% block preface %}
+            <div class="mt-5 mb-2">
+                <p>
+                    ALAID a pour vocation d'aider les professionnel.le.s du corps médical investi.e.s
+                    dans la mobilisation nationale pour lutter contre le COVID-19.
+                    Conscient de leur charge de travail, cette application ne s'adresse pas à
+                    eux directement, mais à leurs proches car ces proches connaissent eux aussi
+                    le quotidien difficile des soignant.e.s et disposent surement de plus de temps pour
+                    faire le lien avec des bénévoles citoyens pour répondre à leurs besoins.
+                </p>
+                <p>
+                    En tant que potentiel bénévole, restez à l'affut des besoins du corps médical via cette page.
+                    Si vous pensez pouvoir répondre à une demande, contactez le proche via le champ prévu à cet effet
+                    dans le détail de la demande. Sinon, merci de partager ce lien à votre entourage !
+                </p>
+            </div>
+        {% endblock %}
+
+    </div>
+{% endblock %}

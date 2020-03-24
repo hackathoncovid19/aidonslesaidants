@@ -40,4 +40,14 @@ class HomepageController
         $url = $this->router->generate('ticket_list');
         return new RedirectResponse($url, 302);
     }
+
+    /**
+     * @Route("/", name="home", methods={"GET","POST"})
+     * @throws Exception
+     */
+    public function dataProtection()
+    {
+        $url = $this->router->generate('data_protection');
+        return new RedirectResponse($url, 302);
+    }
 }
