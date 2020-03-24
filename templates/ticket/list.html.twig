@@ -13,7 +13,7 @@
             <h2 class="text-center text-uppercase pt-5">liste de demandes</h2>
         </div>
         {% block preface %}
-            <div class="mt-5 mb-2">
+            <div class="mt-3 mb-2">
                 <p>
                     ALAID a pour vocation d'aider les professionnel.le.s du corps médical investi.e.s
                     dans la mobilisation nationale pour lutter contre le COVID-19.
@@ -30,17 +30,19 @@
             </div>
         {% endblock %}
 
+<div class="overflow-auto mb-5" style="max-height:295px">
         {% for ticket in tickets.open %}
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
-	
+
 	{% if is_granted('ROLE_USER') != true %}
 		<p>Il n'y a pas d'autres besoins de professionnel.le.s du corps médical remontés pour le moment mais n'hésitez pas à revenir plus tard ou à proposer votre aide à d'autres personnes dans le besoin via nos partenaires :
 <a href="https://covid19.reserve-civique.gouv.fr/missions">Réserve Civique</a>, <a href="https://enpremiereligne.fr/">En Première Ligne</a> et <a href="https://covidaire.fr/">Covidaire, tous solidaires</a> !</p>
 	{% endif %}
-					
+
         {% for ticket in tickets.others %}
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
+        </div>
     </div>
 {% endblock %}
