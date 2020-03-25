@@ -25,7 +25,7 @@
                 </p>
             </div>
         {% endblock %}
-<div class="overflow-auto mb-5" style="max-height:295px">
+<div class="overflow-auto mb-5 ticket-list">
         {% for ticket in tickets.open %}
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}

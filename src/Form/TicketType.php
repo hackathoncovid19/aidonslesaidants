@@ -16,6 +16,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class TicketType extends AbstractType
 {
@@ -32,8 +33,10 @@ class TicketType extends AbstractType
                     'placeholder' => 'Titre de la demande'
                 ],
                 'constraints' => [
+                    new NotNull(),
                     new NotBlank(['message' => 'Merci de saisir le titre de votre demande'])
-                ]
+                ],
+                'empty_data' => '',
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
@@ -41,8 +44,10 @@ class TicketType extends AbstractType
                     'placeholder' => 'Description'
                 ],
                 'constraints' => [
+                    new NotNull(),
                     new NotBlank(['message' => 'Merci de saisir une description'])
-                ]
+                ],
+                'empty_data' => '',
             ])
             ->add('postcode', TextType::class, [
                 'attr' => [
@@ -57,14 +62,17 @@ class TicketType extends AbstractType
                     'placeholder' => 'Contact'
                 ],
                 'constraints' => [
+                    new NotNull(),
                     new NotBlank(['message' => 'Merci de saisir votre contact'])
-                ]
+                ],
+                'empty_data' => '',
             ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-perso mx-auto rounded-0'
                 ]
             ]);
+
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, [$this, 'onPreSetData']);
     }
@@ -86,6 +94,11 @@ class TicketType extends AbstractType
                         'placeholder' => 'Statut',
                     ],
                     'required' => true,
+                    'constraints' => [
+                        new NotNull(),
+                        new NotBlank(),
+                    ],
+                    'empty_data' => '',
                 ]);
         } else {
             $form->add('rgpdAccepted', CheckboxType::class, [
@@ -105,7 +118,7 @@ class TicketType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Ticket::class
+            'data_class' => Ticket::class,
         ]);
     }
 
