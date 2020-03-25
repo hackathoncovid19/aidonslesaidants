@@ -35,8 +35,9 @@
                 </ul>
             </div>
         </nav> -->
-        {% block alert %}{% endblock %}
-        <div class="container-sm">
+      {% block alert %}<p class="text-center pt-1 pb-1 mb-1"></p>{% endblock %}
+
+        <div class="container-sm" style="padding-bottom:56px">
             <div id="headForm">
               <a href="/"><img id="logo" class="float-left" src="{{ asset('img/logo.png') }}"/></a>
       				<h2 class="text-uppercase text-center float-right titre">{% block headForm %}ALAID{% endblock %}</h2>
