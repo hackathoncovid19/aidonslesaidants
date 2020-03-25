@@ -69,7 +69,7 @@ class TicketType extends AbstractType
             ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-perso mx-auto rounded-0'
+                    'class' => 'btn btn-perso mx-auto rounded'
                 ]
             ]);
 
