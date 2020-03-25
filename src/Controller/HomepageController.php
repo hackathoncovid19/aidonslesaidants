@@ -40,4 +40,5 @@ class HomepageController
         $url = $this->router->generate('ticket_list');
         return new RedirectResponse($url, 302);
     }
+
 }
