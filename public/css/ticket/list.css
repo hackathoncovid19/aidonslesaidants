@@ -18,11 +18,6 @@ label,
     text-decoration: none;
 }
 
-#headForm {
-    background: linear-gradient( 90deg, rgba(85, 239, 196, 1) 0%, rgba(0, 184, 148, 1) 100%);
-    height: 150px;
-}
-
 .btn-perso,
 .text-close,
 .text-close a {
@@ -58,6 +53,7 @@ label,
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
 .ticket-list {
     max-height: 295px;
 }
@@ -66,12 +62,16 @@ label,
     width: 8px
 }
 
+
 /* background of the scrollbar except button or resizer */
+
 .ticket-list::-webkit-scrollbar-track {
     background-color: #e8e8ee;
 }
 
+
 /* scrollbar itself */
+
 .ticket-list::-webkit-scrollbar-thumb {
     border-radius: 16px;
     height: 30px;

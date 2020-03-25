@@ -37,10 +37,16 @@
         </nav> -->
       {% block alert %}<p class="text-center pt-1 pb-1 mb-1"></p>{% endblock %}
 
-        <div class="container-sm" style="padding-bottom:56px">
-            <div id="headForm">
-              <a href="/"><img id="logo" class="float-left" src="{{ asset('img/logo.png') }}"/></a>
-      				<h2 class="text-uppercase text-center float-right titre">{% block headForm %}ALAID{% endblock %}</h2>
+        <div class="container" style="padding-bottom:56px">
+            <div id="headForm" class="row">
+                <div class="col-md-6 text-center d-flex align-items-center">
+                        <a href="/">
+                            <img class="img-fluid w-50"  src="{{ asset('img/logo.png') }}"/>
+                        </a>
+                </div>
+                <div class="col-md-6 d-flex align-items-center">
+                        <h2 class="text-uppercase m-auto">{% block headForm %}ALAID{% endblock %}</h2>
+                </div>
             </div>
             {% block body %}
             {% endblock %}

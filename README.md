@@ -36,6 +36,14 @@ docker exec -it alaid_php php composer.phar install -d /alaid
 http://alaid.test
 ```
 
+## Data migration ##
+
+*Update database to latest schema*
+
+```
+docker exec -it alaid_php php composer.phar install -d /alaid
+```
+
 ## Troubleshooting ##
 
 *Clear any previous container instance and image*
