@@ -10,11 +10,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
 
 class UserType extends AbstractType
 {
     /**
+     * TODO use DTO instead entity to avoid to remove entity type hinting
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -49,7 +49,6 @@ class UserType extends AbstractType
                         ]),
                     ],
                     'type' => PasswordType::class,
-                    'mapped' => false,
                     'invalid_message' => 'Les mots de passe ne correspondent pas.',
                     'required' => true,
                     'first_options' => [
