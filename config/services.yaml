@@ -25,3 +25,7 @@ services:
 
     Laminas\Hydrator\ObjectPropertyHydrator:
         class: Laminas\Hydrator\ObjectPropertyHydrator
+
+    App\Command\TicketTerminatedPurgeContactCommand:
+        arguments:
+            0: '@App\Repository\TicketRepository'
