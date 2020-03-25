@@ -25,7 +25,7 @@
                 </p>
             </div>
         {% endblock %}
-<div class="overflow-auto mb-5 ticket-list">
+        <div>
         {% for ticket in tickets.open %}
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
@@ -38,5 +38,5 @@
         {% for ticket in tickets.others %}
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
-</div>
+    </div>
 {% endblock %}
