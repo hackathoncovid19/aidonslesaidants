@@ -76,11 +76,8 @@ class LegalController
         if ($this->authenticationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             $url = $this->router->generate('ticket_view_user_list');
             return new RedirectResponse($url, 302);
-        }else {
-            $url = $this->router->generate('ticket_list');
-            return new RedirectResponse($url, 302);
         }
-
-        return new Response($content);
+        $url = $this->router->generate('ticket_list');
+        return new RedirectResponse($url, 302);
     }
 }
