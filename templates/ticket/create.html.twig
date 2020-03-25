@@ -9,67 +9,66 @@
 {% block headForm %}Nouvelle demande{% endblock %}
 {% block body %}
 
-        {% for message in app.flashes('notice') %}
-            <div class="alert alert-info">{{ message }}</div>
-        {% endfor %}
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
 
-        <div class="mt-3"></div>
+    <div class="mt-3"></div>
 
-        {% form_theme form 'bootstrap_4_layout.html.twig' %}
-        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-            <div class="form-group">
-                {{ form_widget(form.title) }}
-                {{ form_errors(form.title) }}
-            </div>
-            <div class="form-group">
-                {{ form_widget(form.description) }}
-                {{ form_errors(form.description) }}
-            </div>
-            <div class="form-group">
-                {{ form_widget(form.postcode) }}
-            </div>
-            <div class="form-group">
-                {{ form_widget(form.contact) }}
-                {{ form_errors(form.contact) }}
-            </div>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="form-group">
+        {{ form_widget(form.title) }}
+        {{ form_errors(form.title) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.description) }}
+        {{ form_errors(form.description) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.postcode) }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.contact) }}
+        {{ form_errors(form.contact) }}
+    </div>
 
-            <p>Attention, ce contact sera partagé à tout public.</p>
-            <div class="form-group mb-1">
-                {{ form_widget(form.rgpdAccepted) }}
-            </div>
-            <div id="rgpd_text" class="p-3">
-                <p>
-                    Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par ALAID - AIDONS LES AIDANTS pour les demandes de services à destination des bénévoles.
-                    Elles sont conservées pendant 30 jours après le passage d'une demande en "terminé" et sont destinées à :
-                    - ALAID - AIDONS LES AIDANTS (<a href="https://www.aidonslesaidants.fr" target="_blank">www.aidonslesaidants.fr</a>) en qualité de propriétaire du site web et récipiendaire des formulaires,
-                    - OVH (<a href="https://www.ovh.com" target="_blank">www.ovh.com</a>) en tant qu'hébergeur de notre site web
-                </p>
-                <p>
-                    Conformément aux articles 15 à 22 RGPD, concernant les données que nous détenons sur vous, vous disposez des droits suivants :
-                    - droit d’accès (article 15 du RGPD)
-                    - droit de rectification (article 16 du RGPD)
-                    - droit d’effacement (article 17 du RGPD)
-                    - droit à la limitation du traitement (article 18 du RGPD)
-                    - droit de notification des rectifications, effacements, limitation (article 19 du RGPD)
-                    - droit à la portabilité des données (article 20 du RGPD)
-                    - droit d’opposition (article 21 du RGPD)
-                    - droit de ne pas faire l’objet d’un profilage (article 22 du RGPD)
-                </p>
-                <p class="mb-0">
-                    Vous pouvez exercer ces droits en contactant : <a href="mailto:alaid.tech@gmail.com">alaid.tech@gmail.com</a>.
-                </p>
-            </div>
-            <div id="all_mentions_button" class="w-25 mx-auto mb-2 text-center">
-                <span class="text-white">LIRE TOUTES LES MENTIONS</span>
-            </div>
+    <p>Attention, ce contact sera partagé à tout public.</p>
+    <div class="form-group mb-1">
+        {{ form_widget(form.rgpdAccepted) }}
+    </div>
+    <div id="rgpd_text" class="p-3">
+        <p>
+            Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par ALAID - AIDONS LES AIDANTS pour les demandes de services à destination des bénévoles.
+            Elles sont conservées pendant 30 jours après le passage d'une demande en "terminé" et sont destinées à :
+            - ALAID - AIDONS LES AIDANTS (<a href="https://www.aidonslesaidants.fr" target="_blank">www.aidonslesaidants.fr</a>) en qualité de propriétaire du site web et récipiendaire des formulaires,
+            - OVH (<a href="https://www.ovh.com" target="_blank">www.ovh.com</a>) en tant qu'hébergeur de notre site web
+        </p>
+        <p>
+            Conformément aux articles 15 à 22 RGPD, concernant les données que nous détenons sur vous, vous disposez des droits suivants :
+            - droit d’accès (article 15 du RGPD)
+            - droit de rectification (article 16 du RGPD)
+            - droit d’effacement (article 17 du RGPD)
+            - droit à la limitation du traitement (article 18 du RGPD)
+            - droit de notification des rectifications, effacements, limitation (article 19 du RGPD)
+            - droit à la portabilité des données (article 20 du RGPD)
+            - droit d’opposition (article 21 du RGPD)
+            - droit de ne pas faire l’objet d’un profilage (article 22 du RGPD)
+        </p>
+        <p class="mb-0">
+            Vous pouvez exercer ces droits en contactant : <a href="mailto:alaid.tech@gmail.com">alaid.tech@gmail.com</a>.
+        </p>
+    </div>
+    <div id="all_mentions_button" class="w-25 mx-auto mb-2 text-center">
+        <span class="text-white">LIRE TOUTES LES MENTIONS</span>
+    </div>
 
-            <div class="d-flex flex-row">
-                {{ form_widget(form.valider) }}
+    <div class="d-flex flex-row">
+        {{ form_widget(form.valider) }}
 
-                <a href="{{ path('ticket_view_user_list') }}" class=" ml-2 btn btn-danger">Annuler</a>
-            </div>
+        <a href="{{ path('ticket_view_user_list') }}" class=" ml-2 btn btn-danger">Annuler</a>
+    </div>
 
-        {{ form_end(form) }}
+    {{ form_end(form) }}
 {% endblock %}
 
 {% block javascripts %}

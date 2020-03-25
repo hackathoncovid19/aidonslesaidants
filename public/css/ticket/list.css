@@ -58,3 +58,22 @@ label,
     margin-left: 1rem;
     margin-right: 1rem;
 }
+.ticket-list {
+    max-height: 295px;
+}
+
+.ticket-list::-webkit-scrollbar {
+    width: 8px
+}
+
+/* background of the scrollbar except button or resizer */
+.ticket-list::-webkit-scrollbar-track {
+    background-color: #e8e8ee;
+}
+
+/* scrollbar itself */
+.ticket-list::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    height: 30px;
+    border: 4px solid #babac0;
+}

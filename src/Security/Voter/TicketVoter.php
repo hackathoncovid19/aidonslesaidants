@@ -4,9 +4,27 @@ namespace App\Security\Voter;
 
 use App\Entity\Ticket;
 use App\Entity\User;
+use App\Security\Checker\OwnerTicketChecker;
+use Symfony\Component\Security\Core\Security;
 
 class TicketVoter extends AbstractVoter
 {
+    /**
+     * @var OwnerTicketChecker
+     */
+    private $ownerTicketChecker;
+
+    /**
+     * TicketVoter constructor.
+     * @param Security $security
+     * @param OwnerTicketChecker $ownerTicketChecker
+     */
+    public function __construct(Security $security, OwnerTicketChecker $ownerTicketChecker)
+    {
+        parent::__construct($security);
+        $this->ownerTicketChecker = $ownerTicketChecker;
+    }
+
     /**
      * @var string
      */
@@ -38,6 +56,6 @@ class TicketVoter extends AbstractVoter
      */
     protected function canEdit($subject, User $user): bool
     {
-        return $subject->getUser() === $user;
+        return $this->ownerTicketChecker->isOwnerOf($user, $subject);
     }
 }

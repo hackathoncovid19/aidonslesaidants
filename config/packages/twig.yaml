@@ -1,2 +1,5 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    form_theme: ['bootstrap_4_layout.html.twig']
+    globals:
+        ownerTicketChecker: '@App\Security\Checker\OwnerTicketChecker'

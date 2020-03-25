@@ -121,7 +121,6 @@ class TicketController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ticket->setUser($this->security->getUser());
-            $ticket->setStatus(TicketStatusEnum::TICKET_STATUS_OPEN);
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
@@ -150,7 +149,8 @@ class TicketController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $ticket = $form->getData();
-
+            $this->entityManager->persist($ticket);
+            $this->entityManager->flush();
             $request->getSession()->getFlashBag()->add('notice', 'Votre modification a bien été enregistrée !');
 
             $url = $this->router->generate('ticket_edit', ['id' => $ticket->getId()]);
@@ -209,7 +209,7 @@ class TicketController
         ];
 
         foreach ($tickets as $ticket) {
-            if ($ticket->getStatus() === TicketStatusEnum::TICKET_STATUS_OPEN) {
+            if ($ticket->isOpen()) {
                 $return['open'][] = $ticket;
             } else {
                 $return['others'][] = $ticket;

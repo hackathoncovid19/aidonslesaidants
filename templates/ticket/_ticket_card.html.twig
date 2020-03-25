@@ -1,27 +1,29 @@
 {% if status[ticket.status] is defined %}
-<div class="shadow p-3 mb-3 bg-{{ status[ticket.status].cssClass }} text-{{ status[ticket.status].cssClass }} rounded mr-3 ml-3">
-    <a href="{{ path('ticket_view', {id: ticket.id}) }}" class="row ticket-link">
-        <div class="pl-3">
-            <p class="my-auto">{{ ticket.title }}</p>
-        </div>
-        <div class="ml-auto px-3">
-            <p class="text-center my-auto">
-            {% if ticket.postcode %}
-                <i class="fas fa-map-marked-alt"></i>
-                {{ ticket.postcode }}
-            {% endif %}
-            </p>
-        </div>
-        <div class="border-perso-{{ status[ticket.status].cssClass }}" style="width:110px">
-            <p class="text-center my-auto text-{{ status[ticket.status].cssClass }}">{{ status[ticket.status].name }}</p>
-        </div>
-        <div class="border-perso-{{ status[ticket.status].cssClass }}" style="width:110px">
-            <p class="text-center my-auto">
-            {% if ticket.creationDate %}
-                {{ ticket.creationDate|date("d/m/Y", "Europe/Paris") }}
-            {% endif %}
-            </p>
-        </div>
-    </a>
-</div>
+    {% set ticketRoutePath = app.user is not empty and ownerTicketChecker.isOwnerOf(app.user, ticket) ? 'ticket_edit' : 'ticket_view' %}
+
+    <div class="shadow p-3 mb-3 bg-{{ status[ticket.status].cssClass }} text-{{ status[ticket.status].cssClass }} rounded mr-3 ml-3">
+        <a href="{{ path(ticketRoutePath, {id: ticket.id}) }}" class="row ticket-link">
+            <div class="pl-3">
+                <p class="my-auto">{{ ticket.title }}</p>
+            </div>
+            <div class="ml-auto px-3">
+                <p class="text-center my-auto">
+                    {% if ticket.postcode %}
+                        <i class="fas fa-map-marked-alt"></i>
+                        {{ ticket.postcode }}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="border-perso-{{ status[ticket.status].cssClass }}" style="width:110px">
+                <p class="text-center my-auto text-{{ status[ticket.status].cssClass }}">{{ status[ticket.status].name }}</p>
+            </div>
+            <div class="border-perso-{{ status[ticket.status].cssClass }}" style="width:110px">
+                <p class="text-center my-auto">
+                    {% if ticket.creationDate %}
+                        {{ ticket.creationDate|date("d/m/Y", "Europe/Paris") }}
+                    {% endif %}
+                </p>
+            </div>
+        </a>
+    </div>
 {% endif %}
