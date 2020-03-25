@@ -41,7 +41,7 @@ http://alaid.test
 *Update database to latest schema*
 
 ```
-docker exec -it alaid_php php composer.phar install -d /alaid
+docker exec -it alaid_php php /alaid/bin/console d:s:u -f
 ```
 
 ## Troubleshooting ##

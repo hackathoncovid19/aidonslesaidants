@@ -23,11 +23,12 @@
                     </div>
 
                     <div class="col-md-8" pl-5>
-                        {% if ticket.postcode is defined %}
+                        {% if ticket.postcode is not empty %}
                             <p class="card-text">Code postal: <span class="font-weight-bold">{{ ticket.postcode }}</span></p>
                         {% endif %}
-
-                        <p class="card-text">Contact: <span style="color:#00b894">{{ ticket.contact }}</span></p>
+                        {% if ticket.status == 1 %}
+                          <p class="card-text">Contact: <span style="color:#00b894">{{ ticket.contact }}</span></p>
+                        {% endif %}
                         <p class="card-text">Créée le : {{ ticket.creationDate|date("d/m/Y", "Europe/Paris") }}</p>
                         <div class="d-flex flex-row mt-5">
                             {% if is_granted('ROLE_USER') == true %}
