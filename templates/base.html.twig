@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +14,7 @@
             <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}" />
         {% endblock %}
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
         <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
             <a class="navbar-brand" href="#">
                 <img height="60" src="{{ asset('img/logo.png') }}"/>
@@ -35,22 +35,30 @@
                 </ul>
             </div>
         </nav> -->
-      {% block alert %}<p class="text-center pt-1 pb-1 mb-1"></p>{% endblock %}
-
-        <div class="container" style="padding-bottom:56px">
-            <div id="headForm" class="row">
-                <div class="col-md-6 text-center d-flex align-items-center">
-                        <a href="/">
-                            <img class="img-fluid w-50"  src="{{ asset('img/logo.png') }}"/>
-                        </a>
+      {% block alert %}
+      {# <p class="text-center pt-1 pb-1 mb-1"></p> #}
+      {% endblock %}
+        <main role="main">
+            <div class="container">
+                <div id="headForm" class="row">
+                    <div class="col-md-6 text-center d-flex align-items-center">
+                            <a href="/">
+                                <img class="img-fluid w-50"  src="{{ asset('img/logo.png') }}"/>
+                            </a>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center">
+                            <h2 class="text-uppercase m-auto">{% block headForm %}ALAID{% endblock %}</h2>
+                    </div>
                 </div>
-                <div class="col-md-6 d-flex align-items-center">
-                        <h2 class="text-uppercase m-auto">{% block headForm %}ALAID{% endblock %}</h2>
-                </div>
+                {% block body %}
+                {% endblock %}
             </div>
-            {% block body %}
-            {% endblock %}
-        </div>
+        </main>
+        <!-- Footer -->
+        <footer class="mt-auto">
+            {% include 'footer.html.twig' %}
+        </footer>
+        <!-- Footer -->
         {% block javascripts %}
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -58,10 +66,5 @@
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         {% endblock %}
-        <!-- Footer -->
-        <footer>
-            {% include 'footer.html.twig' %}
-        </footer>
-        <!-- Footer -->
     </body>
 </html>
