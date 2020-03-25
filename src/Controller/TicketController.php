@@ -127,7 +127,7 @@ class TicketController
 
             $request->getSession()->getFlashBag()->add('notice', 'Votre demande a bien été enregistrée !');
 
-            return new RedirectResponse($this->router->generate('ticket_view_user_list', ['id' => 1]));
+            return new RedirectResponse($this->router->generate('ticket_view_user_list', ['id' => 1], ['_fragment' => 'validate']));
         }
 
         return new Response($this->twig->render('ticket/create.html.twig', [
