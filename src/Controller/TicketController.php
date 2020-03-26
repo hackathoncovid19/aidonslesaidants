@@ -84,7 +84,7 @@ class TicketController
     }
 
     /**
-     * @Route("/user/ticket/list-by-user", name="view_user_list", methods={"GET"})
+     * @Route("/%user_path%/ticket/list-by-user", name="view_user_list", methods={"GET"})
      *
      * @return Response
      * @throws Exception
@@ -104,7 +104,7 @@ class TicketController
     }
 
     /**
-     * @Route("/user/ticket/new", name="create", methods={"GET","POST"})
+     * @Route("/%user_path%/ticket/new", name="create", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
      *
      * @param Request $request
@@ -136,7 +136,7 @@ class TicketController
 
     /**
      * @IsGranted("EDIT", subject="ticket")
-     * @Route("/user/ticket/edit/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/%user_path%/ticket/edit/{id}", name="edit", methods={"GET","POST"})
      * @param Request $request
      * @param Ticket $ticket
      * @return Response|RedirectResponse
