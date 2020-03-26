@@ -42,7 +42,11 @@
             <div class="container">
                 <div id="headForm" class="row">
                     <div class="col-md-6 text-center d-flex align-items-center">
+                    {% if is_granted('ROLE_USER') == true %}
+                            <a href="{{ path('user_login') }}">
+                    {% else %}
                             <a href="/">
+                    {% endif %}
                                 <img class="img-fluid w-50"  src="{{ asset('img/logo.png') }}"/>
                             </a>
                     </div>
