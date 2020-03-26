@@ -15,7 +15,7 @@ security:
 
     firewalls:
         all_site:
-            access_denied_handler: App\Security\AccessDeniedHandler
+            access_denied_handler: App\Security\Handler\AccessDeniedHandler
             anonymous: ~
 
         assets_and_debug:
