@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security;
+namespace App\Security\Handler;
 
 use Exception;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
