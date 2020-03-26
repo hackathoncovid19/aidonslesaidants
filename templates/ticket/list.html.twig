@@ -30,9 +30,9 @@
             {{ include('ticket/_ticket_card.html.twig') }}
         {% endfor %}
 
-	{% if tickets.open is empty %}
-		<p>Il n'y a pas d'autres besoins de professionnel.le.s du corps médical remontés pour le moment mais n'hésitez pas à revenir plus tard ou à proposer votre aide à d'autres personnes dans le besoin via nos partenaires :
-        <a href="https://covid19.reserve-civique.gouv.fr/missions">Réserve Civique</a>, <a href="https://enpremiereligne.fr/">En Première Ligne</a> et <a href="https://covidaire.fr/">Covidaire, tous solidaires</a> !</p>
+	{% if tickets.open is empty and is_granted('ROLE_USER') != true %}
+		<hr><p>Toutes les demandes sont en cours de réalisation par un bénévole ! :D <br>Il n'y a pas d'autres besoins de professionnel.le.s du corps médical remontés pour le moment mais n'hésitez pas à revenir plus tard ou à proposer votre aide à d'autres personnes dans le besoin via nos partenaires :
+        <a target="_blank" rel="noopener noreferrer" href="https://covid19.reserve-civique.gouv.fr/missions">Réserve Civique</a>, <a target="_blank" rel="noopener noreferrer" href="https://enpremiereligne.fr/">En Première Ligne</a> et <a target="_blank" rel="noopener noreferrer" href="https://covidaire.fr/">Covidaire, tous solidaires</a> !</p>
 	{% endif %}
 
         {% for ticket in tickets.others %}
