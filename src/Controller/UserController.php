@@ -20,7 +20,7 @@ use App\Entity\User;
 use App\Form\UserType;
 
 /**
- * @Route("/user", name="user_")
+ * @Route("/%user_path%", name="user_")
  */
 class UserController
 {
@@ -90,7 +90,7 @@ class UserController
     }
 
     /**
-     * @Route("/urltemporaire", name="login", methods={"GET","POST"})
+     * @Route("/connexion", name="login", methods={"GET","POST"})
      * @return Response
      * @throws Exception
      */
@@ -127,7 +127,7 @@ class UserController
     }
 
     /**
-     *  @Route("/enregistrement-urltemporaire", name="register", methods={"GET","POST"})
+     *  @Route("/enregistrement", name="register", methods={"GET","POST"})
      * @param   Request $request
      * @return  Response|RedirectResponse
      * @throws  Exception
