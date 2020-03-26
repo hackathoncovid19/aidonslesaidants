@@ -19,7 +19,7 @@ use App\Enum\TicketStatusEnum;
 use App\Form\TicketType;
 
 /**
- * @Route("/ticket", name="ticket_")
+ * @Route("", name="ticket_")
  */
 class TicketController
 {
@@ -71,7 +71,7 @@ class TicketController
     }
 
     /**
-     * @Route("/view/{id}", name="view", methods={"GET"})
+     * @Route("/ticket/view/{id}", name="view", methods={"GET"})
      * @param Ticket $ticket
      * @return string
      * @throws Exception
@@ -84,7 +84,7 @@ class TicketController
     }
 
     /**
-     * @Route("/list-by-user", name="view_user_list", methods={"GET"})
+     * @Route("/user/ticket/list-by-user", name="view_user_list", methods={"GET"})
      *
      * @return Response
      * @throws Exception
@@ -104,7 +104,7 @@ class TicketController
     }
 
     /**
-     * @Route("/new", name="create", methods={"GET","POST"})
+     * @Route("/user/ticket/new", name="create", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
      *
      * @param Request $request
@@ -136,7 +136,7 @@ class TicketController
 
     /**
      * @IsGranted("EDIT", subject="ticket")
-     * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/user/ticket/edit/{id}", name="edit", methods={"GET","POST"})
      * @param Request $request
      * @param Ticket $ticket
      * @return Response|RedirectResponse
@@ -174,7 +174,7 @@ class TicketController
     }
 
     /**
-     * @Route("/list", name="list", methods={"GET"})
+     * @Route("/ticket/list", name="list", methods={"GET"})
      * @throws Exception
      */
     public function list()
