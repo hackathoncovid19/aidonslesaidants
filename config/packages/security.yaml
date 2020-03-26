@@ -14,6 +14,10 @@ security:
         ROLE_SUPERUSER: [ROLE_USER, ROLE_ADMIN]
 
     firewalls:
+        all_site:
+            access_denied_handler: App\Security\AccessDeniedHandler
+            anonymous: ~
+
         assets_and_debug:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
