@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aidons les aidants{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/ticket/list.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block headForm %}Mentions légales{% endblock %}
+{% block body %}
+        {% block preface %}
+            <div class="mt-5 mb-2">
+                <p>Le Responsable de l'édition de aidonslesaidants.fr est HackLaCrise (alaid.tech@gmail.com).</p>
+                <p>Le Responsable de l'hébergement de aidonslesaidants.fr est OVH SAS :
+                <ul>
+                  <li>SAS au capital de 10 069 020 €</li>
+                  <li>RCS Lille Métropole 424 761 419 00045</li>
+                  <li>Code APE 2620Z</li>
+                  <li>N° TVA : FR 22 424 761 419</li>
+                  <li>Siège social : 2 rue Kellermann - 59100 Roubaix - France</li>
+                  <li>Directeur de publication : Octave KLABA</li>
+                  <li>Président : Henryk KLABA</li>
+                  <li>OVH SAS est une filiale de la société OVH Groupe SAS, société immatriculée au RCS de Lille sous le numéro 537 407 926 sise 2, rue Kellermann, 59100 Roubaix.</li>
+                </ul></p>
+            </div>
+        {% endblock %}
+        <div class="d-flex flex-row-reverse mt-4">
+              <a href="{{ path('legal_back') }}" class="btn btn-perso">Retour</a>
+        </div>
+{% endblock %}
