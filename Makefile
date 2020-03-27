@@ -20,3 +20,6 @@ phpunit-run:
 
 phpunit-coverage:
 	docker exec -it alaid_php php /alaid/bin/phpunit --configuration /alaid/phpunit.xml /alaid/tests
+
+cypress-run:
+	docker-compose -f .docker/docker-compose.yml run cypress

@@ -40,3 +40,12 @@ services:
           MYSQL_DATABASE: alaid
           MYSQL_ROOT_PASSWORD: temp0raryp@ssword!
           MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+    cypress:
+        container_name: alaid_cypress
+        image: cypress/included:4.1.0
+        command: "--browser chrome"
+        volumes:
+          - ../cypress:/cypress
+          - ./cypress/cypress.json:/cypress.json
+        volumes_from:
+          - php

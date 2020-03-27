@@ -59,3 +59,23 @@ docker rmi docker_php
 ```
 make docker-start-rebuild
 ```
+
+### Unit and functional testing ###
+
+*Using phpunit with makefile*
+
+```
+make phpunit-run
+```
+
+*Using phpunit and code coverage with makefile*
+
+```
+make phpunit-coverage
+```
+
+*Using cypress with makefile*
+
+```
+make cypress-run
+```
