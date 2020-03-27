@@ -67,6 +67,16 @@ class LegalController
     }
 
     /**
+     * @Route("/mentions", name="mentions", methods={"GET"})
+     * @return string
+     * @throws Exception
+     */
+    public function mentions()
+    {
+        return new Response($this->twig->render('legal/mentions.html.twig'));
+    }
+
+    /**
      * @Route("/back", name="back", methods={"GET","POST"})
      * @return Response
      * @throws Exception
