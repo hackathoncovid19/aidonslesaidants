@@ -1,5 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Aidons les aidants{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/ticket/list.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block headForm %}404{% endblock %}
 {% block body %}
-    La page demandée n'existe pas
+        {% block preface %}
+            <div class="mt-5 mb-2">
+                <p>La page demandée n'existe pas.</p>
+            </div>
+        {% endblock %}
 {% endblock %}
