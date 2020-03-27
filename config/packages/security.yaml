@@ -40,9 +40,9 @@ security:
     access_control:
         #todo force to https
         - { path: ^/ticket/(view/\d+|list)$, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: ^/ticket, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
-        - { path: ^/user/(enregistrement-urltemporaire|urltemporaire), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: ^/user, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
+        - { path: ^/%user_path%/ticket, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
+        - { path: ^/%user_path%/(enregistrement|connexion), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/%user_path%, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
         - { path: ^/legal/data-protection, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
         - { path: ^/legal/cgu, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
         - { path: ^/legal/mentions, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
