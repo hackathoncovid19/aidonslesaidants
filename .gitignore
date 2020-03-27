@@ -5,6 +5,7 @@
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/cache
+/var/log/phpunit
 /var/log/apache_err_logs
 /var/log/apache_logs
 /vendor/
@@ -19,3 +20,9 @@
 
 # MySQL local database
 .docker/mysql/data
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

@@ -14,3 +14,9 @@ docker-start-rebuild:
 
 doctrine-update:
 	docker exec -it alaid_php php /alaid/bin/console d:s:u -f
+
+phpunit-run:
+	docker exec -it alaid_php php /alaid/bin/phpunit --configuration /alaid/phpunit.xml --no-logging /alaid/tests
+
+phpunit-coverage:
+	docker exec -it alaid_php php /alaid/bin/phpunit --configuration /alaid/phpunit.xml /alaid/tests

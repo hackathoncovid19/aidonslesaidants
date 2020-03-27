@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./tests/bootstrap.php" colors="true" >
+    <testsuites>
+        <testsuite name="Alaid">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/Controller</directory>
+            <directory suffix=".php">./src/Service</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="./var/log/phpunit/" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+    </logging>
+</phpunit>
