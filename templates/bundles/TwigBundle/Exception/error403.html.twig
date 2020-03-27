@@ -1,5 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Aidons les aidants{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/ticket/list.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block headForm %}403{% endblock %}
 {% block body %}
-    Vous n'avez pas les droits pour accéder à cette demande.
+        {% block preface %}
+            <div class="mt-5 mb-2">
+                <p>Vous n'avez pas les droits pour accéder à cette demande.</p>
+            </div>
+        {% endblock %}
 {% endblock %}
