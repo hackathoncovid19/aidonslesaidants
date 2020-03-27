@@ -28,7 +28,7 @@
                         {% endif %}
                         {% if ticket.status == 1 %}
                           <p class="card-text">Contact: <span style="color:#00b894">
-                            {% if ticket.contact matches "#^([-/+,;. ]?[0-9]{1}){6,12}$#" %}
+                            {% if ticket.contact matches "/^([-/+,;. ]?[0-9]{1}){6,12}$/" %}
                               <a href="tel:{{ ticket.contact }}">{{ ticket.contact }}</a>
                             {% elseif ticket.contact matches "/^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" %}
                               <a href="mailto:{{ ticket.contact }}">{{ ticket.contact }}</a>
