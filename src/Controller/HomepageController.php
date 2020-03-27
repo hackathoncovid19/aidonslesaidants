@@ -41,4 +41,14 @@ class HomepageController
         return new RedirectResponse($url, 302);
     }
 
+    /**
+     * @Route("/%user_path%", name="backoffice", methods={"GET","POST"})
+     * @throws Exception
+     */
+    public function backoffice()
+    {
+        $url = $this->router->generate('user_login');
+        return new RedirectResponse($url, 302);
+    }
+
 }
