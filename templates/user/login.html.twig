@@ -14,6 +14,23 @@
 {% block headForm %}Accueil proches{% endblock %}
 {% block body %}
 
+        <!-- Modal -->
+        <div class="modal fade" id="videoGuide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog mt-5" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">/!\ IMPORTANT /!\ - Guide de première utilisation</h5>
+              </div>
+              <div class="modal-body embed-responsive embed-responsive-16by9">
+                <iframe src="https://drive.google.com/file/d/1_4vT4XWDuT7YFeNZM-w936xzxNMeviZ1/preview" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="modal-footer">
+                <button id="closeVideo" type="button" class="btn btn-perso" data-dismiss="modal">Fermer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
@@ -48,4 +65,22 @@
 
             <input type="hidden" name="csrf_token"value="{{ csrf_token('authenticate') }}">
         </form>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+      $(window).on('load',function(){
+          $('#videoGuide').modal('show');
+          // var time = 2 * ( 60 * 1000 );
+          // setTimeout(function(){
+          //   $('#closeVideo').removeAttr("disabled");
+          // }, time);
+      });
+      $('#videoGuide').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+    </script>
 {% endblock %}
