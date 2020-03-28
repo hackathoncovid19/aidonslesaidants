@@ -27,15 +27,7 @@
                             <p class="card-text">Code postal: <span class="font-weight-bold">{{ ticket.postcode }}</span></p>
                         {% endif %}
                         {% if ticket.status == 1 %}
-                          <p class="card-text">Contact: <span style="color:#00b894">
-                            {% if ticket.contact matches "/^([-/+,;. ]?[0-9]{1}){6,12}$/" %}
-                              <a href="tel:{{ ticket.contact }}">{{ ticket.contact }}</a>
-                            {% elseif ticket.contact matches "/^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" %}
-                              <a href="mailto:{{ ticket.contact }}">{{ ticket.contact }}</a>
-                            {% else %}
-                              {{ ticket.contact }}
-                            {% endif %}
-                          </span></p>
+                          <p class="card-text">Contact: <span style="color:#00b894">{{ ticket.contact }}</span></p>
                         {% endif %}
                         <p class="card-text">Créée le : {{ ticket.creationDate|date("d/m/Y", "Europe/Paris") }}</p>
                         <div class="d-flex flex-row mt-5">
