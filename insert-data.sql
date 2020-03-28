@@ -15,87 +15,44 @@ DELETE FROM user;
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (1, "muriel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
+  (1, "alaid.tech", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
 INSERT INTO user
   (id,username,password,roles)
 VALUES
-  (2, "maura.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (3, "emmanuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (4, "nes.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (5, "samuel.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (6, "guillaume.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (7, "marion.user", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:9:\"ROLE_USER\";}");
-
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (8, "muriel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (9, "maura.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (10, "emmanuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (11, "nes.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (12, "samuel.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (13, "guillaume.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
-INSERT INTO user
-  (id,username,password,roles)
-VALUES
-  (14, "marion.admin", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+  (2, "njmbmegcskmsndac", "$argon2id$v=19$m=65536,t=4,p=1$UHA1dVpYLlFsdTNoSTRZLg$+kZvbxK7OZ9muOJHZQ73peJFve4O8XSU05wUubhHGYs", "a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
 
 
+  INSERT INTO ticket
+    (`id`,`user_id`,`status`,`title`,`description`,`postcode`,`contact`,`rgpd_accepted`,`creation_date`,`assigned_date`,`resolved_date`)
+  VALUES
+    (1,1,3,'Demande d\'aide pour amener un chat chez le vétérinaire','Ma femme est chirurgienne et m\'a fait remonter la demande d\'un de ces collègues pour amener son chat chez le vétérinaire, je ne peux pas me déplacer car je dois garder les enfants mais je m\'occupe de faire le lien avec le collègue de ma femme. ','78360','alexis.jtt@gmail.com',1,'2020-03-24 21:47:19',NULL,NULL);
 
-INSERT INTO ticket
-  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
-VALUES
-  (1, 5, "Demande de prêt de vélo pour se rendre à l'hôpital", "Besoin d'un vélo pour ma femme chirurgienne pour qu'elle puisse se rendre à l'hôpital tous les matins à 9h. Merci d'avance de nous contacter à antoine.theret@gmail.com. Nous nous organiserons pour mettre le vélo à disposition en respectant les règles barrières d'hygiène. ", "75017", "antoine.theret@gmail.com",1,TRUE);
-INSERT INTO ticket
-  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
-VALUES
-  (2, 2, "Demande d'aide pour amener un chat chez le vétérinaire", "Mon mari est infirmier et m'a fait remonter la demande d'un de ces collègues pour amener son chat chez le vétérinaire, je ne peux pas me déplacer car je dois garder les enfants mais je m'occupe de faire le lien avec le collègues de mon mari. ", "78360", "alexi.michelin@gmail.com",1,TRUE);
-INSERT INTO ticket
-  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
-VALUES
-  (3, 4, "Demande d'aide pour amener un chien chez le vétérinaire", "Mon mari est infirmier et m'a fait remonter la demande d'un de ces collègues pour amener son chat chez le vétérinaire, je ne peux pas me déplacer car je dois garder les enfants mais je m'occupe de faire le lien avec le collègues de mon mari. ",
-    "78360", "alexi.michelin@gmail.com",2,TRUE);
-INSERT INTO ticket
-  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
-VALUES
-  (4, 2, "Besoin d'une application pour gérer les temps d'attente dans les urgences", "Merci de me contacter pour plus d'info", "", "0667089997",3,TRUE);
-INSERT INTO ticket
-  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
-VALUES
-  (5, 4, "Besoin d'une application en ligne pour partager des images d'échographie de patients", "Ma soeur travail en bloc et m'a fait remonter un besoin de partage d'images entre collègues. Pourriez-vous me contacter si vous êtes en capacité de développer informatiquement ce genre de chose ? Merci pour eux, je me tiens à votre disposition!",
-  "78360", "valentine.cuvelier@gmail.com ou 0707098989",2,TRUE);
-INSERT INTO ticket
-  (id,user_id,title,description,postcode,contact,status,rgpd_accepted)
-VALUES
-  (6, 4, "Besoin d'une webcam pour téléconsultation", "Ma femme est médecin généraliste et nous ne sommes plus capable de faire de commandes en ligne pour une webcam. Quelqu'un pourrait nous en envoyer une svp ? Merci d'avance. ",
-    "78360", "delphine.jeantet@gmail.com",1,TRUE);
+  INSERT INTO ticket
+    (`id`,`user_id`,`status`,`title`,`description`,`postcode`,`contact`,`rgpd_accepted`,`creation_date`,`assigned_date`,`resolved_date`)
+  VALUES
+    (2,1,3,'Demande d\'aide pour amener un chien chez le vétérinaire','Mon mari est infirmier et m\'a fait remonter la demande d\'une de ces collègues pour amener son chat chez le vétérinaire, je ne peux pas me déplacer car je dois garder les enfants mais je m\'occupe de faire le lien avec la collègue de mon mari.','78500','christian.thrt@gmail.com',1,'2020-03-27 21:47:19',NULL,'2020-03-25 00:00:27');
+
+  INSERT INTO ticket
+    (`id`,`user_id`,`status`,`title`,`description`,`postcode`,`contact`,`rgpd_accepted`,`creation_date`,`assigned_date`,`resolved_date`)
+  VALUES
+    (3,1,3,'Besoin d\'une application en ligne pour partager de gros volumes d’images d\'échographie de patients infectés','Merci de me contacter pour plus d\'informations.',NULL,'0699999999',1,'2020-03-24 21:47:19',NULL,NULL);
+
+  INSERT INTO ticket
+    (`id`,`user_id`,`status`,`title`,`description`,`postcode`,`contact`,`rgpd_accepted`,`creation_date`,`assigned_date`,`resolved_date`)
+  VALUES
+    (4,1,3,'Besoin d\'une webcam pour téléconsultation','Ma femme est médecin généraliste et nous ne sommes plus capable de faire de commandes en ligne pour une webcam. Quelqu\'un pourrait nous en envoyer une svp ? Merci d\'avance. ','78360','antoine.lsgn@gmail.com',1,'2020-03-24 21:47:19',NULL,NULL);
+
+  INSERT INTO ticket
+    (`id`,`user_id`,`status`,`title`,`description`,`postcode`,`contact`,`rgpd_accepted`,`creation_date`,`assigned_date`,`resolved_date`)
+  VALUES
+    (5,1,3,'Mon mari infirmier à domicile à besoin d\'un vélo pour se rendre chez ses patients','Mon mari infirmier à domicile à besoin d\'un vélo pour se rendre chez ses patients. Merci d\'avance de me contacter au plus vite, nous nous organiserons pour mettre le vélo à sa disposition en respectant les règles barrières d\'hygiène.','75017','remikoci@gmail.com',1,'2020-03-24 23:26:23','2020-03-27 23:28:40',NULL);
+
+  INSERT INTO ticket
+    (`id`,`user_id`,`status`,`title`,`description`,`postcode`,`contact`,`rgpd_accepted`,`creation_date`,`assigned_date`,`resolved_date`)
+  VALUES
+    (6,1,3,'Besoin d\'une application en ligne pour partager de gros volumes d’images d\'échographie de patients infectés','Merci de me contacter pour plus d\'informations',NULL,'0709090909',1,'2020-03-27 23:27:49',NULL,NULL);
+
+  INSERT INTO ticket
+    (`id`,`user_id`,`status`,`title`,`description`,`postcode`,`contact`,`rgpd_accepted`,`creation_date`,`assigned_date`,`resolved_date`)
+  VALUES
+    (7,1,3,'Ma soeur infirmière est dans l\'incapacité d\'aller chercher ses courses','Bonjour,\r\nMa soeur infirmière fait ses courses en ligne mais n\'a plus le temps d\'aller les chercher au drive de son magasin. J\'aimerai pouvoir l\'aider mais je ne suis pas véhiculer. N\'hésitez pas à m\'appeler au numéro de téléphone ci-joint.\r\nMerci pour elle !','75015','0799999999',1,'2020-03-27 23:41:05',NULL,NULL);
