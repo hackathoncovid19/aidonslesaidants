@@ -1,4 +1,4 @@
-version: '2'
+version: '3.1'
 services:
     httpd:
         container_name: alaid_web
@@ -10,8 +10,7 @@ services:
         volumes:
           - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
           - ./apache/vhosts:/usr/local/apache2/sites-available
-        volumes_from:
-            - php
+          - ..:/alaid # Previously volumes_from php container
     php:
         container_name: alaid_php
         restart: always
@@ -34,9 +33,24 @@ services:
         expose:
           - 3306
         volumes:
-          - ./mysql/data:/var/lib/mysql
+          - mysqldata:/var/lib/mysql
           - ./mysql/mysql.cnf:/etc/mysql/mysql.conf.d/conf-mysql.cnf:ro
         environment:
           MYSQL_DATABASE: alaid
-          MYSQL_ROOT_PASSWORD: temp0raryp@ssword!
+          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-temp0raryp@ssword!}
           MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+    backup:
+        build: ./cron
+        container_name: aliad_db_cron
+        environment:
+          MYSQL_CONTAINER_NAME: alaid_db
+          MYSQL_DATABASE: alaid
+          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-temp0raryp@ssword!}
+        volumes:
+          - backup:/opt/mysql/backup
+        command: crond -f -d 8
+        restart: always
+
+volumes:
+  backup:
+  mysqldata:
