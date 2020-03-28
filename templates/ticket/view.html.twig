@@ -40,7 +40,7 @@
                         <p class="card-text">Créée le : {{ ticket.creationDate|date("d/m/Y", "Europe/Paris") }}</p>
                         <div class="d-flex flex-row mt-5">
                             {% if is_granted('ROLE_USER') == true %}
-                                <a href="{{ path('ticket_view_user_list') }}" class="btn btn-perso mr-2">Retour à ma liste de demandes</a>
+                                <a href="{{ path('ticket_view_user_list') }}" class="btn btn-perso mr-2">Retour à mes demandes</a>
                             {% endif %}
                                 <a href="{{ path('ticket_list') }}" class="ml-5 btn btn-perso">Retour à la liste des demandes</a>
                         </div>
