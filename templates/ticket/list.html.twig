@@ -11,7 +11,7 @@
         {% block preface %}
             <div class="mt-3 mb-2">
                 <p>
-                    ALAID a pour vocation d'aider les professionnel.le.s du corps médical investi.e.s
+                    ALAID a pour vocation d'aider les professionnel.le.s de santé investi.e.s
                     dans la mobilisation nationale pour lutter contre le COVID-19.
                     Conscient de leur charge de travail, cette application ne s'adresse pas à
                     eux directement, mais à leurs proches car ces proches connaissent eux aussi
@@ -31,7 +31,7 @@
         {% endfor %}
 
 	{% if tickets.open is empty and is_granted('ROLE_USER') != true %}
-		<hr class="mt-0"><p>Toutes les demandes sont en cours de réalisation par un bénévole ! :D <br>Il n'y a pas d'autres besoins de professionnel.le.s du corps médical remontés pour le moment mais n'hésitez pas à revenir plus tard ou à proposer votre aide à d'autres personnes dans le besoin via nos partenaires :
+		<hr class="mt-0"><p>Toutes les demandes sont en cours de réalisation par un bénévole ! :D <br>Il n'y a pas d'autres besoins de professionnel.le.s de santé remontés pour le moment mais n'hésitez pas à revenir plus tard ou à proposer votre aide à d'autres personnes dans le besoin via nos partenaires :
         <a target="_blank" rel="noopener noreferrer" href="https://covid19.reserve-civique.gouv.fr/missions">Réserve Civique</a>, <a target="_blank" rel="noopener noreferrer" href="https://enpremiereligne.fr/">En Première Ligne</a> et <a target="_blank" rel="noopener noreferrer" href="https://covidaire.fr/">Covidaire, tous solidaires</a> !</p>
 	{% endif %}
 
