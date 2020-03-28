@@ -37,9 +37,9 @@ security:
 
     access_control:
         #todo force to https
-        - { path: '^/%env(string:USER_PATH)%/ticket', roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
-        - { path: '^/%env(string:USER_PATH)%/user', roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
-        - { path: '^/%env(string:USER_PATH)%/user/(enregistrement|connexion)', roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: '^/ticket/(view/\d+|list)$', roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: '^/legal/(data-protection|cgu)', roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: '^/', roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/ticket/(view/\d+|list)$, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/%user_path%/ticket, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
+        - { path: ^/%user_path%/(enregistrement|connexion), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/%user_path%, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
+        - { path: ^/legal/(data-protection|cgu|mentions), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
