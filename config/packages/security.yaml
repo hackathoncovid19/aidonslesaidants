@@ -14,15 +14,13 @@ security:
         ROLE_SUPERUSER: [ROLE_USER, ROLE_ADMIN]
 
     firewalls:
-        all_site:
-            access_denied_handler: App\Security\Handler\AccessDeniedHandler
-            anonymous: ~
-
         assets_and_debug:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
         user_control:
+            pattern: ^/
+            access_denied_handler: App\Security\Handler\AccessDeniedHandler
             user_checker: App\Service\UserChecker
             provider: database
             anonymous: true
@@ -39,9 +37,9 @@ security:
 
     access_control:
         #todo force to https
-        - { path: ^/ticket/(view/\d+|list)$, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: ^/%user_path%/ticket, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
-        - { path: ^/%user_path%/(enregistrement|connexion), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: ^/%user_path%, roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
-        - { path: ^/legal/(data-protection|cgu|mentions), roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: '^/%env(string:USER_PATH)%/ticket', roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
+        - { path: '^/%env(string:USER_PATH)%/user', roles: [IS_AUTHENTICATED_FULLY, ROLE_USER, ROLE_ADMIN], requires_channel: http }
+        - { path: '^/%env(string:USER_PATH)%/user/(enregistrement|connexion)', roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: '^/ticket/(view/\d+|list)$', roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: '^/legal/(data-protection|cgu)', roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
+        - { path: '^/', roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
