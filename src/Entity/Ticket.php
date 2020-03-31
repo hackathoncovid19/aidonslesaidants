@@ -141,6 +141,16 @@ class Ticket
         return $this;
     }
 
+    public function getRule(): ?bool
+    {
+        return false; // Default state
+    }
+
+    public function setRule(?bool $rgpdAccepted)
+    {
+        return $this;
+    }
+
     public function getUser(): ?User
     {
         return $this->user;
