@@ -138,4 +138,14 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    public function getRule(): ?bool
+    {
+        return false; // Default state
+    }
+
+    public function setRule(?bool $rgpdAccepted)
+    {
+        return $this;
+    }
 }

@@ -108,6 +108,14 @@ class TicketType extends AbstractType
                         'message' => 'Vous devez accepter l\'utilisation de vos données personnelles.'
                     ])
                 ]
+            ])
+            ->add('rule', CheckboxType::class, [
+                'label' => 'Je certifie que cette demande est enregistrée pour un professionnel de santé.',
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Cette demande doit être faite pour un professionnel de santé.'
+                    ])
+                ]
             ]);
         }
     }

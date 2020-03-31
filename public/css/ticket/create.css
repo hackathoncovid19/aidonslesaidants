@@ -23,12 +23,14 @@ label {
 }
 
 label[for=newDemande_rgpdAccepted],
+label[for=newDemande_rule],
 #rgpd_text,
 #all_mentions_button {
     font-size: .7rem;
 }
 
-label[for=newDemande_rgpdAccepted] {
+label[for=newDemande_rgpdAccepted],
+label[for=newDemande_rule] {
     font-style: italic;
 }
 
